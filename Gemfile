@@ -1,7 +1,8 @@
 source 'http://rubygems.org'
 
 gem 'sinatra'
-gem 'activerecord', '~> 4.2', '>= 4.2.6', :require => 'active_record'
+gem 'activerecord', '~> 6.0.0'
+gem 'activesupport', '~> 6.0.1.rc1'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
 gem 'rake'
 gem 'require_all'
@@ -11,6 +12,7 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'bootstrap'
+gem 'sqlite3'
 gem 'carrierwave'
 
 group :test do

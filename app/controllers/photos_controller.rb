@@ -3,31 +3,28 @@ class PhotosController < ApplicationController
     
   get '/photos' do
     if logged_in?
-      @photos = Photos.all
-      erb :photos
-    else 
-      redirect to '/login'
+      redirect to '/recent'
     end 
   end 
 
   get '/photos/new' do 
     if logged_in?
-      erb:'photos/upload_photo'
+      erb :upload
     else 
-      redirect to 'login'
+      redirect to '/index'
     end 
   end 
 
   post '/photos' do 
     if logged_in? 
       if params[:content] == "" 
-        redirect to "/photos/new"
+        redirect to '/recent'
       else
         @photos = current_user.photos.build(content: params[:content])
         if @photos.save
-          redirect to "/photos/#{photo.id}"
+          redirect to "/recent/#{photo.id}"
         else 
-          redirect to "/photos/new"
+          redirect to '/recent'
         end
       end
     else
@@ -40,7 +37,7 @@ class PhotosController < ApplicationController
             @photos = Photos.find_by_id(paramas[:id])
             erb :'photos/show_photo'
         else
-            redirect to 'login'
+            redirect to '/recent'
         end
     end
 
@@ -50,31 +47,31 @@ class PhotosController < ApplicationController
             if @photos && @photos.user == current_user 
                 erb :'photos/edit_photo'
             else 
-                redirect to '/photos'
+                redirect to '/recent'
             end 
         else 
-            redirect to '/login'
+            redirect to '/index'
         end
     end
 
     patch '/photos/:id' do 
         if logged_in?
             if params[:content] == ""
-                redirect to "/photos/#{params[:id]}/edit"
+                redirect to "/recent/#{params[:id]}/edit"
             else
                 @photos = Photos.find_by_id(params[:id])
                 if @photos && @photos.user == current_user
                     if @photos.update(content: params[:content])
-                        redirect to "/photos/#{@photos.id}"
+                        redirect to "/recent/#{@photos.id}"
                     else
-                        redirect to "/photos/#{@photo.id}/edit"
+                        redirect to "/recent/#{@photo.id}/edit"
                     end
                 else
-                    redirect to '/photos'
+                    redirect to '/recent'
                 end
             end
         else
-            redirect to '/login'
+            redirect to '/index'
         end
     end
 
@@ -84,7 +81,7 @@ class PhotosController < ApplicationController
             if @photos && @photos.user == current_user 
                 @photos.delete
             end
-                    redirect to '/photos'
+                    redirect to '/recent'
             else
                 redirect to '/login'
             end

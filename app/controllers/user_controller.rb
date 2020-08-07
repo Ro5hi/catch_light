@@ -1,4 +1,4 @@
-class Users < ActiveRecord::Base
+class User < ActiveRecord::Base
     
     get '/' do
         erb :index
@@ -14,7 +14,7 @@ class Users < ActiveRecord::Base
 
     get '/createacct' do
       if !logged_in? 
-        erb :'users/create_user', locals: {message: Please create an account.} 
+        erb :'users/create_user'
       else
         redirect to '/photos'
       end
@@ -34,7 +34,7 @@ class Users < ActiveRecord::Base
   
     get '/login' do
       if !logged_in?
-        erb:'users/login', locals: {message: Please enter your username and password.}
+        erb:'users/login'
       else 
         redirect to '/photos'
       end
@@ -46,7 +46,7 @@ class Users < ActiveRecord::Base
     end 
   
     post '/login' do 
-      user = User.find_by(:username: => params[:username])
+      user = User.find_by(:username => params[:username])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id 
         redirect to '/home'
@@ -54,3 +54,4 @@ class Users < ActiveRecord::Base
         redirect to '/createacct'
       end 
     end
+  end 
