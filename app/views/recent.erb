@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html style="padding: 0px;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Projects - PhotoBook</title>
+    <link rel="stylesheet" href="public/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
+    <link rel="stylesheet" href="public/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="public/css/Custom-File-Upload.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
+    <link rel="stylesheet" href="public/css/Profile-Edit-Form-1.css">
+    <link rel="stylesheet" href="public/css/Profile-Edit-Form.css">
+</head>
+
+    <body>
+    <nav class="navi-bar navi-bar-dark navi-bar-expand-lg fixed-top bg-white navi-bar-gradient" style="filter: grayscale(51%) hue-rotate(284deg);">
+        <div class="container"><a class="navbar-brand logo" href="#">CATCH LIGHT</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navi-bar-collapse"
+                id="navi-bar-Nav">
+                <ul class="nav navi-bar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="navi-link active" href="index.erb">Home</a></li>
+                        <li class="navi-item dropdown"><a class="dropdown-toggle navi-link" data-toggle="dropdown" aria-expanded="false" href="#">Menu</a>
+                            <div class="dropdown-menu" role="menu"><a class="dropdown-item page" role="presentation" id="edit-profile" href="edit-profile.erb">Edit Profile</a><a class="dropdown-item page" role="presentation" id="log-out" href="log-out.erb">Log Out</a><a class="dropdown-item page"
+                        role="presentation" id="upload" href="upload.erb">Upload</a><a class="dropdown-item" role="presentation" id="recent" href="recent.erb">Recent</a></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="recent-grid-page">
+        <section class="photo compact-grid">
+            <div class="d-xl-flex justify-content-xl-start heading"></div>
+            <div class="row no-gutters">
+                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image1.jpg"><span class="description"><span class="description-body">From a recent roadtrip.</span></span></a></div>
+                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image2.jpg"><span class="description"><span class="description-heading"></span><span class="description-body">Went abroad country hopping around Southeast Asia.</span></span></a></div>
+                <div
+                    class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image3.jpg"><span class="description"><span class="description-body">Shot with a wide angle lens.</span></span></a></div>
+            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image4.jpg"><span class="description"><span class="description-body">Alberta, Canada.</span></span></a></div>
+            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image5.jpg"><span class="description"><span class="description-body">Drone shot from above.</span></span></a></div>
+            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image6.jpg"><span class="description"><span class="description-body">Shot of the city.</span></span></a></div>
+            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image7.jpg"><span class="description"><span class="description-heading"></span><span class="description-body">Dubai.</span></span></a></div>
+            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image8.jpg"><span class="description"><span class="description-heading"></span><span class="description-body">Taken during a windy day with the DJI Mavic.</span></span></a></div>
+            <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image9.jpg"><span class="description"><span class="description-body">Went on a hike and took this shot.</span></span></a></div>
+            </div>
+            <div class="btn-group" role="group"></div>
+        </section>
+    </main>
+
+    <footer class="page-footer">
+        <p>2020 Catch Light ™</p>
+    </footer>
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/bootstrap/js/bootstrap.min.js"></script>
+    <script src="public/js/Custom-File-Upload.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
+    <script src="public/js/Profile-Edit-Form.js"></script>
+    <script src="public/js/theme.js"></script>
+    </body>
+</html>
