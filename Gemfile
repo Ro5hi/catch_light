@@ -11,6 +11,7 @@ gem 'pry'
 gem 'bcrypt'
 gem 'tux'
 gem 'bootstrap'
+gem 'carrierwave'
 
 group :test do
   gem 'rspec'
