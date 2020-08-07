@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
 
     get '/createacct' do
       if !logged_in? 
-        erb :'users/create_user'
+        erb :index
       else
-        redirect to '/photos'
+        redirect to '/recent'
       end
     end  
   
@@ -25,33 +25,32 @@ class User < ActiveRecord::Base
       if !User.all.find_by('username' => params[:username])
         user = User.create(params)
       else 
-        @error = true 
-        return erb :createacct 
+        return erb :index 
       end 
         session[:user_id] = @user.id 
-        redirect to '/home'
+        redirect to '/recent'
     end 
   
     get '/login' do
       if !logged_in?
         erb:'users/login'
       else 
-        redirect to '/photos'
+        redirect to '/recent'
       end
     end 
   
     get 'logout' do 
       session.clear
-      redirect to '/login'
+      redirect to '/index'
     end 
   
     post '/login' do 
       user = User.find_by(:username => params[:username])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id 
-        redirect to '/home'
+        redirect to '/recent'
       else 
-        redirect to '/createacct'
+        redirect to '/index'
       end 
     end
   end 
