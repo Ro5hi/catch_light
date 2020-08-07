@@ -35,3 +35,17 @@ div.alert {
     opacity: 0;
 }
 
+hr {
+    height: 2px; 
+}
+
+.content-right > * {
+    float: right;
+}
+
+.form-btn {
+    min-width: 100px;
+    margin: 0 5px;
+    max-width: 200px;
+}
+
