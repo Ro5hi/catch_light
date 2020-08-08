@@ -17,15 +17,11 @@ class PhotosController < ApplicationController
 
   post '/photos' do 
     if logged_in? 
-      if params[:content] == "" 
-        redirect to '/recent'
-      else
-        @photos = current_user.photos.build(content: params[:content])
+      redirect to '/recent'
         if @photos.save
           redirect to "/recent/#{photo.id}"
         else 
           redirect to '/recent'
-        end
       end
     else
       redirect to '/login'
