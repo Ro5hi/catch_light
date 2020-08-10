@@ -8,4 +8,4 @@ class User < ActiveRecord::Base
   validates :email, uniqueness: {case_sensitive: false}, presence: true
   validates :password , presence: true
 
-  end
+end
