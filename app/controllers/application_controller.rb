@@ -6,19 +6,60 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "secret"
+    set :session_secret, "QpNLmgTz"
   end
 
   get '/' do
     erb :index
   end
 
-  def logged_in?
-    !!current_user
+  get '/profile' do
+    
+    erb :profile 
+  end 
+
+  get '/editprofile' do
+    #protected!
+    erb :editprofile 
+  end 
+
+  get '/community' do
+    
+    erb :community
+  end 
+  
+  get '/recent' do 
+    @photo = Photo.all 
+    erb :recent
+  end 
+
+  get '/upload' do
+    
+    erb :'photos/upload' 
+  end 
+
+  get '/login' do
+    if logged_in?
+      puts "#{user.email} Successful"
+      erb :'/#login' 
+    else 
+      redirect '/recent'
+    end 
   end
 
-  def current_user
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  get '/signup' do
+    if params[:email] == "" || params[:password] == ""
+      erb :index
+    else
+      user = User.create(email: params[:email], password: params[:password])
+      puts "Created User: #{user.id}" 
+      session[:user_id] = user.id
+      redirect to '/recent'
+    end
   end
+
+  get '/logout' do
+    session[:user_id] = nil 
+  end 
 
 end 

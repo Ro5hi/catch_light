@@ -3,55 +3,56 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Home - PhotoBook</title>
+    <title>CATCH LIGHT</title>
+    
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css" >
+    <link href="stylesheets/Basic-fancyBox-Gallery-v2.css" rel="stylesheet" type="text/css" >
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/Custom-File-Upload.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
-    <link rel="stylesheet" href="assets/css/Profile-Edit-Form-1.css">
-    <link rel="stylesheet" href="assets/css/Profile-Edit-Form.css">
+    <link href="stylesheets/User-list.css" rel="stylesheet" type="text/css" >
+    <link href="stylesheets/Profile-Card-1.css" rel="stylesheet" type="text/css" >
+    <link href="stylesheets/Profile-Edit-Form-1.css" rel="stylesheet" type="text/css" >
+    <link href="stylesheets/Profile-Edit-Form.css" rel="stylesheet" type="text/css" >
+    <link href="stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" >
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" link rel="stylesheet" type="text/css" >
+    <link href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" link rel="stylesheet" type="text/css" >
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css" link rel="stylesheet" type="text/css" >
+</head>
 
     <body>
-    <nav class="navi-bar navi-bar-dark navi-bar-expand-lg fixed-top bg-white navi-bar-gradient" style="filter: grayscale(51%) hue-rotate(284deg);">
-        <div class="container"><a class="navbar-brand logo" href="#">CATCH LIGHT</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navbarNav"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navi-bar-collapse"
-                id="navi-bar-Nav">
-                <ul class="nav navi-bar-nav ml-auto">
-                    <li class="nav-item" role="presentation"><a class="navi-link active" href="index.erb">Home</a></li>
-                    <li class="navi-item dropdown"><a class="dropdown-toggle navi-link" data-toggle="dropdown" aria-expanded="false" href="#">Menu</a>
-                        <div class="dropdown-menu" role="menu"><a class="dropdown-item page" role="presentation" id="edit-profile" href="edit-profile.erb">Edit Profile</a><a class="dropdown-item page" role="presentation" id="log-out" href="log-out.erb">Log Out</a><a class="dropdown-item page"
-                                role="presentation" id="upload" href="upload.erb">Upload</a><a class="dropdown-item" role="presentation" id="recent" href="recent.erb">Recent</a></div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+    <br>
     <main class="page landing-page">
     <section class="page-intro-section">
         <div class="container">
             <div class="site-info">
+            <h1 style="color: rgb(83,159,133);">CATCH LIGHT<br></h1>
                 <p>A personalized collection of photos shot from your camera.</p>
             </div>
         </div>
     </section>
+    <br>
     <section class="photo-group">
         <div class="container">
             <div class="row no-gutters">
-                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image5.jpg"></a></div>
-                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/nature/image2.jpg"></a></div>
-                <div class="col-md-6 col-lg-4 item zoom-on-hover"><a href="#"><img class="img-fluid image" src="public/img/tech/image4.jpg"></a></div>
+                <div class="col-md-6 col-lg-4 "><img class="img-fluid image" src="img/nature/image5.jpg"></div>
+                <div class="col-md-6 col-lg-4 "><img class="img-fluid image" src="img/nature/image2.jpg"></div>
+                <div class="col-md-6 col-lg-4 "><img class="img-fluid image" src="img/tech/image4.jpg"></div>
             </div>
         </div>
     </section>
+    <br>
     <section class="login-or-signup">
         <div class="container">
             <div class="d-flex justify-content-center align-items-center content">
-                <h3>Ready to share?</h3><a href="#"><button class="btn btn-outline-primary" data-toggle="modal" data-target="#signup" type="button">Log In</button></a><button class="btn btn-primary" data-toggle="modal" data-target="#signin" type="button">Sign Up</button></div>
-        </div>
-
+                <h3>Ready to share?</h3>
+                
+                <a href="#login"><button class="btn btn-outline-primary" data-toggle="modal" data-target="#signup" type="button">Sign In</button></a>
+                
+                <a href="#signup"><button class="btn btn-primary" data-toggle="modal" data-target="#signin" type="button">Sign Up</button></div>
+                
+                </div>
+        
         <div class="container-fluid">
         <nav class="navbar navbar-light navbar-expand-md sticky-top bg-white">
             <div class="container-fluid">
@@ -77,25 +78,27 @@
                         <form>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="email" required="" placeholder="Email">
+                                    <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-envelope-o"></i></span></div>
+                                    <input type="text" required="email" placeholder="Email">
                                     <div class="input-group-append"></div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-lock"></i></span></div><input class="form-control" type="password" required="" placeholder="Password">
+                                    <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-lock"></i></span></div>
+                                    <input class="form-control" type="password" placeholder="Password">
                                     <div class="input-group-append"></div>
                                 </div>
                             </div>
-                            <div class="form-group"><button class="btn btn-primary btn-lg text-white" style="width: 100%;" type="button">Log in</button></div>
+                            <div class="form-group"><a href="/login"><button class="btn btn-primary btn-lg text-white" style="width: 100%;" type="button">Log in</button></div></a>
                         </form>
                         <hr style="background-color: #bababa;">
-                        <p class="text-center">Or&nbsp;<a class="text-decoration-none" href="#">Forget password</a></p>
-                        <p class="text-center">Don't have an account? &nbsp;<a class="text-decoration-none" data-dismiss="modal" data-toggle="modal" data-target="#signin" href="#">Sign Up</a></p>
+                        <p class="text-center">Dont have an account? &nbsp;<a class="text-decoration-none" data-dismiss="modal" data-toggle="modal" data-target="#signin" href="/login">Sign Up</a></p>
                     </div>
                 </div>
             </div>
         </div>
+        
         <div class="modal fade" role="dialog" tabindex="-1" id="signin">
             <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -105,29 +108,29 @@
                         <form class="mt-4">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-user-o"></i></span></div><input class="form-control" type="text" required="" placeholder="Full Name">
+                                    <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-user-o"></i></span></div>
+                                    <input class="form-control" type="text" required="" placeholder="Full Name">
                                     <div class="input-group-append"></div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-envelope-o"></i></span></div><input class="form-control" type="email" required="" placeholder="Email">
+                                    <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-envelope-o"></i></span></div>
+                                    <input class="form-control" type="email" required="" placeholder="Email">
                                     <div class="input-group-append"></div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
-                                    <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-lock"></i></span></div><input class="form-control" type="password" required="" placeholder="Password">
+                                    <div class="input-group-prepend"><span class="text-primary input-group-text"><i class="fa fa-lock"></i></span></div>
+                                    <input class="form-control" type="password" required="" placeholder="Password">
                                     <div class="input-group-append"></div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1" required="" checked=""><label class="form-check-label" for="formCheck-1">I agree to the terms and conditions.</label></div>
-                            </div>
-                            <div class="form-group"><button class="btn btn-primary btn-lg text-white" style="width: 100%;" type="button">Sign Up</button></div>
+                                </div>
+                            <div class="form-group"><a href="/signup"><button class="btn btn-primary btn-lg text-white" style="width: 100%;" type="button">Sign Up</button></div></a>
                         </form>
-                        <hr style="background-color: #bababa;">
-                        <p class="text-center">Already have an Account?&nbsp;<a class="text-decoration-none" data-dismiss="modal" data-toggle="modal" data-target="#signup" href="#">Log In</a></p>
                     </div>
                 </div>
             </div>
@@ -138,11 +141,10 @@
 <footer class="page-footer">
 <p>2020 Catch Light ™</p>
 </footer>
-<script src="public/js/jquery.min.js"></script>
-<script src="public/bootstrap/js/bootstrap.min.js"></script>
-<script src="public/js/Custom-File-Upload.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
-<script src="public/js/Profile-Edit-Form.js"></script>
-<script src="public/js/theme.js"></script>
+<script src="js/Profile-Edit-Form.js"></script>
+<script src="js/theme.js"></script>
     </body>
 </html>

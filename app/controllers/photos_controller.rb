@@ -1,40 +1,28 @@
 class PhotosController < ApplicationController
+
+    get '/photos' do 
+      erb :'/login/recent'
+    end 
     
-  get '/photos' do
-    if logged_in?
-      erb :recent 
-    end 
-  end 
+    get '/photos/:id' do 
+      @photo.id = Photo.find(params[:id])
+      erb :'/recent/#{@photo.id}'
+    end
 
-  get '/photos/new' do 
-    if logged_in?
-      erb :'recent/new'
-    end 
-  end 
-
-  post '/photos' do 
-      
-  end 
-
-
-  get '/photos/:id' do 
-      @photo = Photo.find(params[:id])
-      erb :'user/profile'
-  end 
-
-  get '/photos/:id/edit' do 
-      @photo = Photo.find(params[:id])
-      erb :profile
-  end 
-  
-  delete '/photos/:id/delete' do 
+    post '/photos' do 
       if logged_in?
-          @photos = Photos.find_by_id(params[:id])
-          if @photos && @photos.user == current_user 
-          @photos.delete
-              redirect to '/profile'
-          else
-              redirect to '/recent'
-          end
-      end
-  end 
+        @file = Photo.create!(params[:file])
+        @photo = Photo.create!(url:@file)
+        current_user.photos << @photo
+        redirect '/recent'
+      end 
+    end
+
+    post '/photos/:id' do 
+      @photo = Photo.find(params[:id])
+      @photo.save 
+      redirect to '/recent/#{@photo.id}'
+    end
+
+ 
+end

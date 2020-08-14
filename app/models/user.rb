@@ -1,11 +1,11 @@
 class User < ActiveRecord::Base
 
-  has_secure_password
-  
-  has_many :photos
+    has_secure_password
+    
+    has_many :photo
 
-  validates :username, uniqueness: {case_sensitive: false}, presence: true
-  validates :email, uniqueness: {case_sensitive: false}, presence: true
-  validates :password , presence: true
+    validates_presence_of :email, :password_digest
+    validates_uniqueness_of :email, presence: {message: "That email is already taken, please use another email."}
+    validates_uniqueness_of :email, presence: {message: "That email is already associated to another account. Please use another email."}
 
 end

@@ -1,4 +1,4 @@
-class UploaderController < CarrierWave::Uploader::Base
+class PhotoUploader < CarrierWave::Uploader::Base
 
     storage :file
 
@@ -15,5 +15,9 @@ class UploaderController < CarrierWave::Uploader::Base
     def content_type_whitelist
         [/image\//]
     end
+
+    def extension_whitelist
+      %w[jpg jpeg png]
+    end 
 
 end
