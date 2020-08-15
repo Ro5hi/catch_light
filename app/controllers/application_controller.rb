@@ -16,8 +16,7 @@ class ApplicationController < Sinatra::Base
     erb :'users/home'
   end
 
-  post '/signup' do 
-    binding.pry
+  post '/signup' do
     if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
        erb :'users/home'
     else
