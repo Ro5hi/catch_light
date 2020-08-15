@@ -30,9 +30,7 @@ class UsersController < ApplicationController
         redirect to '/recent'
       end 
     end 
-  
     
-
     post '/login' do
       user = User.find_by(email: params[:email])
       if user && user.authenticate(params[:password])

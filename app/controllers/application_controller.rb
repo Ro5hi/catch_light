@@ -1,8 +1,3 @@
-require './config/environment'
-require 'sinatra'
-require 'sinatra/activerecord'
-
-
 class ApplicationController < Sinatra::Base
 
   configure do
@@ -15,7 +10,7 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :'users/home'
   end
-
+  
   post '/signup' do
     if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
        erb :'users/home'
