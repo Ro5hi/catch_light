@@ -35,18 +35,10 @@
     </div>
 </nav>
 
-
-    <form action="/photos" form method="POST" action="/upload">
-        <div class="input-group">
-            <div class="custom-file">
-                <input type="file" name="file"> 
-                
-                <div class="input-group-append">
-                    <input type="submit" value="Upload Photo">
-                    
-                </div>
-            </div>
-        </div>
+    
+    <form method='POST' action='/photos'>
+        <input type='file' name='file' class='form-control'>
+        <button type='submit'>Upload</button>                    
     </form>
 
     <script src="js/jquery.min.js"></script>

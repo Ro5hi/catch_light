@@ -34,20 +34,16 @@
     </nav>
 
     <main class="recent-grid-page">
-        <div id="photos">
         <section class="photo compact-grid">
-            <div class="d-xl-flex justify-content-xl-start heading"></div>
-            <div class="row no-gutters">
-                <% @photos.each do |photo| %>
-                    <li>
-                    <a href="/photos/recent/<%= @photo.id %>"<img src="/<%= @photo.url %>"
-                        <class="photo-thumbnail" style="width:289.98px; height:193.27px;"/>
-                    </a>
-                    </li>
-                <% end %>
-            </div>
-            <div class="btn-group" role="group"></div>
-        </div>
+            <section class="photo-group">
+                <div class="container">
+                    <div class="row no-gutters">
+                        <li>
+                        <% @photos.each do |photo| %>
+                        <li><a href="/photos/<%= photo.id %>"><%= photo.name %></a></li>
+                        <% end %>
+                    </div>
+                </div>
         </section>
     </main>
 

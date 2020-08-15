@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
   end 
 
   get '/editprofile' do
-    #protected!
+    email = @current_user.email if @current_user 
     erb :'users/editprofile' 
   end 
 

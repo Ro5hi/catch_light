@@ -1,0 +1,14 @@
+<%= form_for @user, html: { multipart: true } do |f| %>
+    <p>
+      <label>Photos</label>
+      <%= image_tag(@user.photo_url) if @user.photo? %>
+      <%= f.file_field :photo %>
+    </p>
+  
+    <p>
+      <label>
+        <%= f.check_box :remove_photo %>
+        Remove Photo
+      </label>
+    </p>
+  <% end %>

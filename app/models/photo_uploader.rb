@@ -2,6 +2,8 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
     storage :file
 
+    uploader = PhotoUploader.new
+
     include CarrierWave::MiniMagick
   
     version :thumb do
@@ -9,7 +11,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
     end
     
     def store_dir
-        'public/img'
+        'public/uploads'
       end
     
     def content_type_whitelist

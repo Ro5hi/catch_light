@@ -3,6 +3,7 @@ class CreatePhotos < ActiveRecord::Migration[6.0]
     create_table :photos do |t|
       t.integer :user_id 
       t.string :url
+      t.string :file
     end 
   end 
 end 
