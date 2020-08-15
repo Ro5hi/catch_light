@@ -8,7 +8,7 @@ class UsersController < ApplicationController
       
       def current_user
         puts session[:user_id]
-          @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
       end
   
       def protected!
@@ -22,9 +22,9 @@ class UsersController < ApplicationController
       end
     end
     
-    patch '/editprofile/<%=@user.id%>' do 
-      @user = User.find_by(id:params[:id])
-      if @user && @user.update(email:params[:email], password: params[:password])
+    patch 'users/editprofile' do 
+      @user = User.find_by(id: params[:id])
+      if @user && @user.update(email: params[:email], password: params[:password])
         redirect to '/editprofile'
       else 
         redirect to 'photos/recent'
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       end 
     end 
 
-    get '/editprofile/<%=@user.id%>/delete' do
+    get 'users/editprofile' do
       if logged_in?
         @user = User.find_by(id: params[:id])
         if @user.delete 

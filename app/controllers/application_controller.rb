@@ -30,8 +30,12 @@ class ApplicationController < Sinatra::Base
     
     erb :community
   end 
-  
+  binding.pry
+
   get '/recent' do 
+    @photo = Photo.find(params[:id])
+    @user = User.find(params[:user_id])
+    @ids = User.find(params[:user_id]) 
     erb :'photos/recent'
   end 
 
@@ -42,7 +46,7 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     if logged_in?
-      erb :'/#login' 
+      erb :'users/home'
     else 
       redirect 'photos/recent'
     end 

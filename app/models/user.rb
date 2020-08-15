@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
     has_secure_password
-    
+    belongs_to :recent
     has_many :photo
 
     validates_presence_of :email, :password_digest

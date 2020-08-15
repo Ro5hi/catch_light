@@ -1,0 +1,200 @@
+=> [32m#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x00007fffe034f3b8[0m
+ @advisory_locks_enabled[32m=[0m[1;36mtrue[0m,
+ @config[32m=[0m{[33m:adapter[0m=>[31m[1;31m"[0m[31msqlite3[1;31m"[0m[31m[0m, [33m:database[0m=>[31m[1;31m"[0m[31mdb/development.sqlite3[1;31m"[0m[31m[0m},
+ @connection[32m=[0m
+  [32m#<SQLite3::Database:0x00007fffe034f480[0m
+   @authorizer[32m=[0m[1;36mnil[0m,
+   @busy_handler[32m=[0m[1;36mnil[0m,
+   @collations[32m=[0m{},
+   @encoding[32m=[0m[32m#<Encoding:UTF-8>[0m,
+   @functions[32m=[0m{},
+   @readonly[32m=[0m[1;36mfalse[0m,
+   @results_as_hash[32m=[0m[1;36mtrue[0m,
+   @tracefunc[32m=[0m[1;36mnil[0m,
+   @type_translation[32m=[0m[1;36mnil[0m,
+   @type_translator[32m=[0m
+    [32m#<Proc:0x00007fffdf7b93a0 /var/lib/gems/2.7.0/gems/sqlite3-1.4.2/lib/sqlite3/database.rb:722 (lambda)>[0m[32m>[0m,
+ @idle_since[32m=[0m[1;35m8696.8182984[0m,
+ @instrumenter[32m=[0m
+  [32m#<ActiveSupport::Notifications::Instrumenter:0x00007fffdf8250a0[0m
+   @id[32m=[0m[31m[1;31m"[0m[31m79f95d36d9640d34f03b[1;31m"[0m[31m[0m,
+   @notifier[32m=[0m
+    [32m#<ActiveSupport::Notifications::Fanout:0x00007fffdee4cb50[0m
+     @_mutex[32m=[0m[32m#<Thread::Mutex:0x00007fffdee4c970[0m[32m>[0m,
+     @listeners_for[32m=[0m[32m#<Concurrent::Map:0x00007fffdee4ca88 entries=2 default_proc=nil>[0m,
+     @other_subscribers[32m=[0m[],
+     @string_subscribers[32m=[0m
+      {[31m[1;31m"[0m[31msql.active_record[1;31m"[0m[31m[0m=>
+        [[32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9d8a10[0m
+          @can_publish[32m=[0m[1;36mfalse[0m,
+          @delegate[32m=[0m
+           [32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m
+            @patterns[32m=[0m
+             {[31m[1;31m"[0m[31msql.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9d8a10[0m ...[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner?.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e7e70[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner?.active_record[1;31m"[0m[31m[0m[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner=.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e72e0[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner=.active_record[1;31m"[0m[31m[0m[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e5c88[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner.active_record[1;31m"[0m[31m[0m[32m>[0m},
+            @queue_key[32m=[0m[31m[1;31m"[0m[31mActiveRecord::LogSubscriber-4800[1;31m"[0m[31m[0m[32m>[0m,
+          @pattern[32m=[0m[31m[1;31m"[0m[31msql.active_record[1;31m"[0m[31m[0m[32m>[0m,
+         [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffdea0df58[0m
+          @can_publish[32m=[0m[1;36mfalse[0m,
+          @delegate[32m=[0m[32m#<ActiveRecord::ExplainSubscriber:0x00007fffdea0dfd0[0m[32m>[0m,
+          @pattern[32m=[0m[31m[1;31m"[0m[31msql.active_record[1;31m"[0m[31m[0m[32m>[0m],
+       [31m[1;31m"[0m[31mbacktrace_cleaner?.active_record[1;31m"[0m[31m[0m=>
+        [[32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e7e70[0m
+          @can_publish[32m=[0m[1;36mfalse[0m,
+          @delegate[32m=[0m
+           [32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m
+            @patterns[32m=[0m
+             {[31m[1;31m"[0m[31msql.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9d8a10[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31msql.active_record[1;31m"[0m[31m[0m[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner?.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e7e70[0m ...[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner=.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e72e0[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner=.active_record[1;31m"[0m[31m[0m[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e5c88[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner.active_record[1;31m"[0m[31m[0m[32m>[0m},
+            @queue_key[32m=[0m[31m[1;31m"[0m[31mActiveRecord::LogSubscriber-4800[1;31m"[0m[31m[0m[32m>[0m,
+          @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner?.active_record[1;31m"[0m[31m[0m[32m>[0m],
+       [31m[1;31m"[0m[31mbacktrace_cleaner=.active_record[1;31m"[0m[31m[0m=>
+        [[32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e72e0[0m
+          @can_publish[32m=[0m[1;36mfalse[0m,
+          @delegate[32m=[0m
+           [32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m
+            @patterns[32m=[0m
+             {[31m[1;31m"[0m[31msql.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9d8a10[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31msql.active_record[1;31m"[0m[31m[0m[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner?.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e7e70[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner?.active_record[1;31m"[0m[31m[0m[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner=.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e72e0[0m ...[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e5c88[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner.active_record[1;31m"[0m[31m[0m[32m>[0m},
+            @queue_key[32m=[0m[31m[1;31m"[0m[31mActiveRecord::LogSubscriber-4800[1;31m"[0m[31m[0m[32m>[0m,
+          @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner=.active_record[1;31m"[0m[31m[0m[32m>[0m],
+       [31m[1;31m"[0m[31mbacktrace_cleaner.active_record[1;31m"[0m[31m[0m=>
+        [[32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e5c88[0m
+          @can_publish[32m=[0m[1;36mfalse[0m,
+          @delegate[32m=[0m
+           [32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m
+            @patterns[32m=[0m
+             {[31m[1;31m"[0m[31msql.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9d8a10[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31msql.active_record[1;31m"[0m[31m[0m[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner?.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e7e70[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner?.active_record[1;31m"[0m[31m[0m[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner=.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e72e0[0m
+                @can_publish[32m=[0m[1;36mfalse[0m,
+                @delegate[32m=[0m[32m#<ActiveRecord::LogSubscriber:0x00007fffde9cc580[0m ...[32m>[0m,
+                @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner=.active_record[1;31m"[0m[31m[0m[32m>[0m,
+              [31m[1;31m"[0m[31mbacktrace_cleaner.active_record[1;31m"[0m[31m[0m=>
+               [32m#<ActiveSupport::Notifications::Fanout::Subscribers::Evented:0x00007fffde9e5c88[0m ...[32m>[0m},
+            @queue_key[32m=[0m[31m[1;31m"[0m[31mActiveRecord::LogSubscriber-4800[1;31m"[0m[31m[0m[32m>[0m,
+          @pattern[32m=[0m[31m[1;31m"[0m[31mbacktrace_cleaner.active_record[1;31m"[0m[31m[0m[32m>[0m],
+       [31m[1;31m"[0m[31m!connection.active_record[1;31m"[0m[31m[0m=>[]}[32m>[0m[32m>[0m,
+ @lock[32m=[0m[32m#<ActiveSupport::Concurrency::LoadInterlockAwareMonitor:0x00007fffe0328060[0m[32m>[0m,
+ @logger[32m=[0m
+  [32m#<Logger:0x00007fffdf824718[0m
+   @default_formatter[32m=[0m[32m#<Logger::Formatter:0x00007fffdf8245d8[0m @datetime_format[32m=[0m[1;36mnil[0m[32m>[0m,
+   @formatter[32m=[0m[1;36mnil[0m,
+   @level[32m=[0m[1;34m0[0m,
+   @logdev[32m=[0m
+    [32m#<Logger::LogDevice:0x00007fffdf824588[0m
+     @binmode[32m=[0m[1;36mfalse[0m,
+     @dev[32m=[0m[32m#<IO:<STDOUT>>[0m,
+     @filename[32m=[0m[1;36mnil[0m,
+     @mon_data[32m=[0m[32m#<Monitor:0x00007fffdf824510[0m[32m>[0m,
+     @mon_data_owner_object_id[32m=[0m[1;34m5000[0m,
+     @shift_age[32m=[0m[1;36mnil[0m,
+     @shift_period_suffix[32m=[0m[1;36mnil[0m,
+     @shift_size[32m=[0m[1;36mnil[0m[32m>[0m,
+   @progname[32m=[0m[1;36mnil[0m[32m>[0m,
+ @owner[32m=[0m[32m#<Thread:0x00007fffddd1aeb8 run>[0m,
+ @pool[32m=[0m
+  [32m#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x00007fffe0a5a9c8[0m
+   @automatic_reconnect[32m=[0m[1;36mtrue[0m,
+   @available[32m=[0m
+    [32m#<ActiveRecord::ConnectionAdapters::ConnectionPool::ConnectionLeasingQueue:0x00007fffe0a5a6d0[0m
+     @cond[32m=[0m
+      [32m#<MonitorMixin::ConditionVariable:0x00007fffe0a5a6a8[0m
+       @cond[32m=[0m[32m#<Thread::ConditionVariable:0x00007fffe0a5a680[0m[32m>[0m,
+       @monitor[32m=[0m[32m#<Monitor:0x00007fffe0a5a8d8[0m[32m>[0m[32m>[0m,
+     @lock[32m=[0m[32m#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x00007fffe0a5a9c8[0m ...[32m>[0m,
+     @num_waiting[32m=[0m[1;34m0[0m,
+     @queue[32m=[0m[][32m>[0m,
+   @checkout_timeout[32m=[0m[1;34m5[0m,
+   @connections[32m=[0m[[32m#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x00007fffe034f3b8[0m ...[32m>[0m],
+   @idle_timeout[32m=[0m[1;35m300.0[0m,
+   @lock_thread[32m=[0m[1;36mfalse[0m,
+   @mon_data[32m=[0m[32m#<Monitor:0x00007fffe0a5a8d8[0m[32m>[0m,
+   @mon_data_owner_object_id[32m=[0m[1;34m5040[0m,
+   @now_connecting[32m=[0m[1;34m0[0m,
+   @query_cache_enabled[32m=[0m
+    [32m#<Concurrent::Map:0x00007fffe0a5a888 entries=0 default_proc=#<Proc:0x00007fffe0a5a7c0 /var/lib/gems/2.7.0/gems/activerecord-6.0.3.2/lib/active_record/connection_adapters/abstract/query_cache.rb:32>>[0m,
+   @reaper[32m=[0m
+    [32m#<ActiveRecord::ConnectionAdapters::ConnectionPool::Reaper:0x00007fffe0a5a630[0m
+     @frequency[32m=[0m[1;35m60.0[0m,
+     @pool[32m=[0m[32m#<ActiveRecord::ConnectionAdapters::ConnectionPool:0x00007fffe0a5a9c8[0m ...[32m>[0m[32m>[0m,
+   @size[32m=[0m[1;34m5[0m,
+   @spec[32m=[0m
+    [32m#<ActiveRecord::ConnectionAdapters::ConnectionSpecification:0x00007fffe0a5ad10[0m
+     @adapter_method[32m=[0m[31m[1;31m"[0m[31msqlite3_connection[1;31m"[0m[31m[0m,
+     @config[32m=[0m{[33m:adapter[0m=>[31m[1;31m"[0m[31msqlite3[1;31m"[0m[31m[0m, [33m:database[0m=>[31m[1;31m"[0m[31mdb/development.sqlite3[1;31m"[0m[31m[0m},
+     @name[32m=[0m[31m[1;31m"[0m[31mprimary[1;31m"[0m[31m[0m[32m>[0m,
+   @thread_cached_conns[32m=[0m[32m#<Concurrent::Map:0x00007fffe0a5a770 entries=1 default_proc=nil>[0m,
+   @threads_blocking_new_connections[32m=[0m[1;34m0[0m[32m>[0m,
+ @prepared_statements[32m=[0m[1;36mtrue[0m,
+ @query_cache[32m=[0m{},
+ @query_cache_enabled[32m=[0m[1;36mfalse[0m,
+ @statements[32m=[0m
+  [32m#<ActiveRecord::ConnectionAdapters::SQLite3Adapter::StatementPool:0x00007fffe0328178[0m
+   @cache[32m=[0m{},
+   @statement_limit[32m=[0m[1;34m1000[0m[32m>[0m,
+ @transaction_manager[32m=[0m
+  [32m#<ActiveRecord::ConnectionAdapters::TransactionManager:0x00007fffe03283f8[0m
+   @connection[32m=[0m[32m#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x00007fffe034f3b8[0m ...[32m>[0m,
+   @has_unmaterialized_transactions[32m=[0m[1;36mfalse[0m,
+   @lazy_transactions_enabled[32m=[0m[1;36mtrue[0m,
+   @materializing_transactions[32m=[0m[1;36mfalse[0m,
+   @stack[32m=[0m[][32m>[0m,
+ @visitor[32m=[0m
+  [32m#<Arel::Visitors::SQLite:0x00007fffe03282b8[0m
+   @connection[32m=[0m[32m#<ActiveRecord::ConnectionAdapters::SQLite3Adapter:0x00007fffe034f3b8[0m ...[32m>[0m,
+   @dispatch[32m=[0m{}[32m>[0m[32m>[0m
