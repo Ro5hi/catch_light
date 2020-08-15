@@ -1,16 +1,17 @@
 class PhotosController < ApplicationController
   
-    get '/recent' do 
+    get '/recent' do
+      @photo = Photo.all
+      @user = User.all
       erb :'photos/recent'
     end 
     binding.pry  
     get '/photos/:id' do 
-      @photo.id = Photo.find_by(params[:id])
+      @photo.id = Photo.find_by(params[:user_id])
       erb :'photos/recent/#{@photo.id}'
     end
 
-    post '/photos' do 
-      if logged_in?
+    post '/photos' do
         @file = Photo.create!(params[:file])
         @photo = Photo.create!(url:@file)
         current_user.photos << @photo

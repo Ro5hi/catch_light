@@ -23,7 +23,7 @@ class ApplicationController < Sinatra::Base
 
   get '/editprofile' do
     #protected!
-    erb :editprofile 
+    erb :'users/editprofile' 
   end 
 
   get '/community' do
