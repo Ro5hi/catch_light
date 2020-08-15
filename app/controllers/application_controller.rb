@@ -40,7 +40,7 @@ class ApplicationController < Sinatra::Base
     erb :community
   end 
   
-  get '/users/hello' do 
+  get '/users/hello' do
     erb :'users/hello'
   end 
 
@@ -53,7 +53,6 @@ class ApplicationController < Sinatra::Base
   # end 
 
   get '/upload' do
-    
     erb :'photos/upload' 
   end 
 
@@ -61,7 +60,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       erb :'users/hello'
     else 
-      redirect '/users/hello/#{@user.id}'
+      redirect '/users/home'
     end 
   end
 
@@ -77,12 +76,12 @@ class ApplicationController < Sinatra::Base
   # end
 
   get '/users/home' do
-    redirect 'users/home'
+    erb :'users/home'
   end 
 
   get '/logout' do 
     session.clear 
-    redirect 'users/home'
+    redirect 'users/goodbye'
   end 
   
 end
