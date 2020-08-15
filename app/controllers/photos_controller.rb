@@ -9,7 +9,7 @@ class PhotosController < ApplicationController
     post '/photos' do
         @file = Photo.create!(params[:file])
         @photo = Photo.create!(url:@file)
-        redirect 'photos/recent'
+        redirect 'photos/show'
     end
     
     post '/photos/:id' do 

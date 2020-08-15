@@ -44,13 +44,13 @@ class UsersController < ApplicationController
       end 
     end 
 
-    get 'users/editprofile' do
+    delete '/users/:id' do
       if logged_in?
         @user = User.find_by(id: params[:id])
         if @user.delete 
-          erb :index 
+          erb :'users/home'
         else 
-          redirect to 'photos/recent'
+          redirect to 'users/hello'
         end 
       end 
     end 
