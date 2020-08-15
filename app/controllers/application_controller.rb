@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
     else
         user = User.create(name: params[:name], email: params[:email], password: params[:password])
         session[:user_id] = user.id
-        redirect to 'photos/recent'
+        redirect to 'users/hello'
     end 
   end 
 
@@ -30,14 +30,18 @@ class ApplicationController < Sinatra::Base
     
     erb :community
   end 
-  binding.pry
-
-  get '/recent' do 
-    @photo = Photo.find(params[:id])
-    @user = User.find(params[:user_id])
-    @ids = User.find(params[:user_id]) 
-    erb :'photos/recent'
+  
+  get '/users/hello' do 
+    erb :'users/hello'
   end 
+
+  # # get '/recent' do 
+  # get '/photos/recent' do 
+  #   @photo = Photo.find(params[:id])
+  #   @user = User.find(params[:user_id])
+  #   # @ids = User.find(params[:user_id]) 
+  #   erb :'photos/recent'
+  # end 
 
   get '/upload' do
     
@@ -48,7 +52,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       erb :'users/home'
     else 
-      redirect 'photos/recent'
+      redirect '/users/hello/#{@user.id}'
     end 
   end
 

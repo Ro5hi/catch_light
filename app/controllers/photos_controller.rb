@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
 
     get '/photos/:id' do 
-      @photos.id = Photo.find_by(params[:user_id])
+      binding.pry
+      @photos.id = Photo.find_by(user_id: params[:user_id])
       erb :'photos/recent'
     end
 

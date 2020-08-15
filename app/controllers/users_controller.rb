@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     patch 'users/editprofile' do 
       @user = User.find_by(id: params[:id])
       if @user && @user.update(email: params[:email], password: params[:password])
+        @user.update(params)
         redirect to '/editprofile'
       else 
         redirect to 'photos/recent'
