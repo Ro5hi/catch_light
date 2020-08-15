@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html>
 
-    <%= Rails.root.join("public", "filename.csv") %>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -38,9 +36,9 @@
 </div>
 </nav>
     <div class="card text-center" style="margin: 0px;padding: -12px;width: 58px;">
+    <title>Members</title>
         <div class="caption">
-            <h5><a id="user_id" href="#" style="width: auto;"> James Doe</a></h5>
-            <h5><a id="user_id" href="#" style="width: auto;"> James Doe</a><a id="user_id" href="#" style="width: auto;"> James Doe</a></h5>
+            <h5><a id="<%= user.id %>" href="#" style="width: auto;"><a id="<%= user.name %>" </a></h5>
         </div>
     </div>
     <section></section>

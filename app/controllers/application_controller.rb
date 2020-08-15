@@ -1,4 +1,7 @@
 require './config/environment'
+require 'sinatra'
+require 'sinatra/activerecord'
+
 
 class ApplicationController < Sinatra::Base
 
@@ -10,8 +13,19 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :index
+    erb :'users/home'
   end
+
+  post '/signup' do 
+    binding.pry
+    if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
+       erb :'users/home'
+    else
+        user = User.create(name: params[:name], email: params[:email], password: params[:password])
+        session[:user_id] = user.id
+        redirect to '/recent'
+    end 
+  end 
 
   get '/editprofile' do
     #protected!
@@ -24,7 +38,6 @@ class ApplicationController < Sinatra::Base
   end 
   
   get '/recent' do 
-    @photo = Photo.all 
     erb :recent
   end 
 
@@ -35,26 +48,25 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     if logged_in?
-      puts "#{user.email} Successful"
       erb :'/#login' 
     else 
       redirect '/recent'
     end 
   end
 
-  get '/signup' do
-    if params[:email] == "" || params[:password] == ""
-      erb :index
-    else
-      user = User.create(email: params[:email], password: params[:password])
-      puts "Created User: #{user.id}" 
-      session[:user_id] = user.id
-      redirect to '/recent'
-    end
-  end
+  # get '/signup' do
+  #   if params[:email] == "" || params[:password] == ""
+  #     erb :'users/home'
+  #   else
+  #     user = User.create(email: params[:email], password: params[:password])
+  #     puts "Created User: #{user.id}" 
+  #     session[:user_id] = user.id
+  #     redirect to '/recent'
+  #   end
+  # end
 
   get '/logout' do
     session[:user_id] = nil 
   end 
 
-end 
+end

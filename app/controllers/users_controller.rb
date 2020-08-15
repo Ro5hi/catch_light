@@ -1,18 +1,36 @@
 class UsersController < ApplicationController
 
-    # post '/signup' do 
-    #   if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""
-    #      erb :'index/signup'
-    #     else
-    #       user = User.create(email: params[:email], password: params[:password])
-    #       session[:user_id] = user.id
-    #       redirect to '/recent'
-    #       elsif params[:password] == params[:confirm_password]
-    #           erb :index
-    #       end 
-    #     end 
-    #   end 
-    # end 
+    helpers do
+  
+      def logged_in?
+        !!current_user
+      end
+      
+      def current_user
+        puts session[:user_id]
+          @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+      end
+  
+      def protected!
+        return if authorized?
+        halt 401, "Not authorized."
+      end 
+  
+      def authorized?
+        @auth ||=  Rack::Auth::Basic::Request.new(request.env)
+        @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
+      end
+    end
+    
+    patch '/editprofile/<%=@user.id%>' do 
+      @user = User.find_by(id:params[:id])
+      if @user && @user.update(email:params[:email], password: params[:password])
+        redirect to '/editprofile'
+      else 
+        redirect to '/recent'
+      end 
+    end 
+  
     
 
     post '/login' do
@@ -27,26 +45,14 @@ class UsersController < ApplicationController
       end 
     end 
 
-  helpers do
-  
-    def logged_in?
-      !!current_user
-    end
-    
-    def current_user
-      puts session[:user_id]
-      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-    end
-
-    def protected!
-      return if authorized?
-      halt 401, "Not authorized."
+    get '/editprofile/<%=@user.id%>/delete' do
+      if logged_in?
+        @user = User.find_by(id: params[:id])
+        if @user.delete 
+          erb :index 
+        else 
+          redirect to '/recent'
+        end 
+      end 
     end 
-
-    def authorized?
-      @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-      @auth.provided? and @auth.basic? and @auth.credentials and @auth.credentials == ['admin', 'admin']
-      end
-    end
-
-end
+  end

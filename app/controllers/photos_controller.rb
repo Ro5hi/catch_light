@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
     end 
     
     get '/photos/:id' do 
-      @photo.id = Photo.find(params[:id])
+      @photo.id = Photo.find_by(params[:id])
       erb :'/recent/#{@photo.id}'
     end
 
@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
     end
 
     post '/photos/:id' do 
-      @photo = Photo.find(params[:id])
+      @photo = Photo.find_by(params[:id])
       @photo.save 
       redirect to '/recent/#{@photo.id}'
     end

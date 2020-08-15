@@ -40,7 +40,7 @@
         <section class="photo compact-grid">
             <div class="d-xl-flex justify-content-xl-start heading"></div>
             <div class="row no-gutters">
-                <% @photo.each do |thumb| %>
+                <% @user.photo.each do |thumb| %>
                     <li>
                     <a href="/recent/<%= @photo.id %>"<img src="/<%= @photo.url %>"
                         <class="photo-thumbnail" style="width:289.98px; height:193.27px;"/>
