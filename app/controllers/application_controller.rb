@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
     else
         user = User.create(name: params[:name], email: params[:email], password: params[:password])
         session[:user_id] = user.id
-        redirect to '/recent'
+        redirect to 'photos/recent'
     end 
   end 
 
@@ -32,7 +32,7 @@ class ApplicationController < Sinatra::Base
   end 
   
   get '/recent' do 
-    erb :recent
+    erb :'photos/recent'
   end 
 
   get '/upload' do
@@ -44,7 +44,7 @@ class ApplicationController < Sinatra::Base
     if logged_in?
       erb :'/#login' 
     else 
-      redirect '/recent'
+      redirect 'photos/recent'
     end 
   end
 

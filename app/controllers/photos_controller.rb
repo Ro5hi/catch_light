@@ -1,12 +1,12 @@
 class PhotosController < ApplicationController
-
-    get '/photos' do 
-      erb :'/login/recent'
+  
+    get '/recent' do 
+      erb :'photos/recent'
     end 
-    
+    binding.pry  
     get '/photos/:id' do 
       @photo.id = Photo.find_by(params[:id])
-      erb :'/recent/#{@photo.id}'
+      erb :'photos/recent/#{@photo.id}'
     end
 
     post '/photos' do 
@@ -14,14 +14,14 @@ class PhotosController < ApplicationController
         @file = Photo.create!(params[:file])
         @photo = Photo.create!(url:@file)
         current_user.photos << @photo
-        redirect '/recent'
+        redirect 'photos/recent'
       end 
     end
 
     post '/photos/:id' do 
       @photo = Photo.find_by(params[:id])
       @photo.save 
-      redirect to '/recent/#{@photo.id}'
+      redirect to 'photos/recent/#{@photo.id}'
     end
 
  

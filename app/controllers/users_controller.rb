@@ -27,7 +27,7 @@ class UsersController < ApplicationController
       if @user && @user.update(email:params[:email], password: params[:password])
         redirect to '/editprofile'
       else 
-        redirect to '/recent'
+        redirect to 'photos/recent'
       end 
     end 
     
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       user = User.find_by(email: params[:email])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect to "#{user.email}/recent"
+        redirect to "photos/recent"
       else
         halt 401 if user.nil?
         session[:user] = user
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
         if @user.delete 
           erb :index 
         else 
-          redirect to '/recent'
+          redirect to 'photos/recent'
         end 
       end 
     end 
