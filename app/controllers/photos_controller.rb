@@ -11,34 +11,21 @@ class PhotosController < ApplicationController
         photo = Photo.new
       
         photo.file = params[:file][:filename]
-      
-
         photo.save!
       
         File.open("./public/uploads/#{params[:file][:filename]}", 'wb') do |f|
         f.write(params[:file][:tempfile].read)
       end
       
-      redirect to("/photos")
+      redirect to("/photos/recent")
     
     end
 
     get '/photos/:id' do 
-      # puts "yeet #{params[:id]}"
-      @photo = Photo.find_by(id: params[:id])
-      erb :'photos/show'
+      photo = Photo.new 
+      photo = Photo.find_by(id: params[:id])
+      redirect to("/photos")
     end
-
-  #   post "photos/recent" do
-  #     #Create new Image Model
-  #     photo = Photo.new
-  #     #Save the data from the request
-  #     photo.file    = params[:file] #carrierwave will upload the file automatically
-  #     #Save
-  #     photo.save!
-  #     #Redirect to view
-  #     redirect to "photos/recent"
-  # end
     
     post '/photos/:id' do 
       @photo = Photo.find_by(params[:user_id])
@@ -46,6 +33,17 @@ class PhotosController < ApplicationController
       @photo.save 
       redirect to "photos/#{photo.id}"
     end
+
+    get '/photos/delete' do 
+      if logged_in?
+        @photo = Photo.find_by(params[:user_id])
+        if @photo.delete 
+          erb :'user/home'
+        else 
+          redirect to '/photos'
+        end 
+      end 
+    end 
 
     
 end

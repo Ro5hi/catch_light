@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
       session[:user_id] = user.id 
       erb :'users/hello'
     else
-        redirect to 'users/home'
+        redirect to '/'
     end 
   end
 
@@ -31,26 +31,13 @@ class ApplicationController < Sinatra::Base
   end 
 
   get '/editprofile' do
-    email = @current_user.email if @current_user 
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
     erb :'users/editprofile' 
-  end 
-
-  get '/community' do
-    
-    erb :community
   end 
   
   get '/users/hello' do
     erb :'users/hello'
   end 
-
-  # # get '/recent' do 
-  # get '/photos/recent' do 
-  #   @photo = Photo.find(params[:id])
-  #   @user = User.find(params[:user_id])
-  #   # @ids = User.find(params[:user_id]) 
-  #   erb :'photos/recent'
-  # end 
 
   get '/upload' do
     erb :'photos/upload' 
@@ -64,28 +51,18 @@ class ApplicationController < Sinatra::Base
     end 
   end
 
-  # get '/signup' do
-  #   if params[:email] == "" || params[:password] == ""
-  #     erb :'users/home'
-  #   else
-  #     user = User.create(email: params[:email], password: params[:password])
-  #     puts "Created User: #{user.id}" 
-  #     session[:user_id] = user.id
-  #     redirect to '/recent'
-  #   end
-  # end
-
   get '/users/home' do
     erb :'users/home'
   end 
 
   get '/users/goodbye' do 
+    session.clear
     erb :'users/goodbye' 
   end 
 
   get '/logout' do 
     session.clear 
-    redirect 'users/goodbye'
+    erb :'users/goodbye'
   end 
   
 end

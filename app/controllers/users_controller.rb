@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   
       def protected!
         return if authorized?
-        halt 401, "Not authorized."
-      end 
+        halt 401, "Invalid, Please try again."
+      end
   
       def authorized?
         @auth ||=  Rack::Auth::Basic::Request.new(request.env)
@@ -36,13 +36,10 @@ class UsersController < ApplicationController
       user = User.find_by(email: params[:email])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect to "users/home"
+        redirect to 'users/hello'
       else
-        halt 401 if user.nil?
-        session[:user] = user
-        200
-        puts "Error."
-      end 
+        puts "Invalid email/password."
+      end
     end 
 
     delete '/users/:id' do

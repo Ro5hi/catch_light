@@ -33,10 +33,6 @@
         }
     }
 
-    $("input.form-control[name=avatar-file]").change(function(){
-        readURL(this);
-    });
-    
     $('#profile').delegate('form', 'submit', function (e) {
         var inst = this;
         var formData = new FormData($(this)[0]);
