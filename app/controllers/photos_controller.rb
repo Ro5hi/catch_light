@@ -1,23 +1,24 @@
 class PhotosController < ApplicationController
 
     get '/photos' do 
-      @photos = Photos.all 
-      @users = User.all 
+      binding.pry
+      @photos = Photo.all 
+      @users = User.all
       erb :'photos/recent'
     end 
 
     post '/photos' do
-        @filename = params[:file => :filename]
-        file = params[:file => :tempfile]
-        @photo= Photo.create!(url:@filename)
-        current_user.photos << @photo
+      photo = Photo.new
 
-        File.open("./public/#{@photo.url}") do |file|
-          file.write(file.read)
-        end
-        
-        redirect to "/photos/#{@photo.id}"
-      end
+      @filename = params[:file => :filename]
+      file = params[:file => :tempfile]
+      
+      Photo.file = params[:file] 
+      Photo.save!
+      
+      redirect to("/photos/recent")
+
+    end
 
     get '/photos/:id' do 
       @photos.id = Photo.find_by(user_id: params[:user_id])
