@@ -13,7 +13,7 @@ ActiveRecord::Base.establish_connection(
 
 
 CarrierWave.configure do |config|
-  config.root = File.dirname(__FILE__) + "/public"
+  config.root = File.dirname(__FILE__) + "/public/img/uploads"
 end
 
 

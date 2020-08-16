@@ -2,8 +2,6 @@ class PhotoUploader < CarrierWave::Uploader::Base
 
     storage :file
 
-    uploader = PhotoUploader.new
-
     include CarrierWave::MiniMagick
   
     version :thumb do
@@ -11,7 +9,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
     end
     
     def store_dir
-        'public/img/uploads'
+        'public/uploads'
       end
     
     def content_type_whitelist
@@ -21,9 +19,5 @@ class PhotoUploader < CarrierWave::Uploader::Base
     def extension_whitelist
       %w[jpg jpeg png]
     end 
-
-    def default_url(*args)
-      "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-    end
 
 end
