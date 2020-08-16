@@ -36,11 +36,12 @@ class UsersController < ApplicationController
       user = User.find_by(email: params[:email])
       if user && user.authenticate(params[:password])
         session[:user_id] = user.id
-        redirect to "photos/recent"
+        redirect to "users/home"
       else
         halt 401 if user.nil?
         session[:user] = user
         200
+        puts "Error."
       end 
     end 
 

@@ -8,10 +8,6 @@
 
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css" >
     <link href="/stylesheets/Basic-fancyBox-Gallery-v2.css" rel="stylesheet" type="text/css" >
-    <link href="/stylesheets/User-list.css" rel="stylesheet" type="text/css" >
-    <link href="/stylesheets/Profile-Card-1.css" rel="stylesheet" type="text/css" >
-    <link href="/stylesheets/Profile-Edit-Form-1.css" rel="stylesheet" type="text/css" >
-    <link href="/stylesheets/Profile-Edit-Form.css" rel="stylesheet" type="text/css" >
     <link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" >
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" link rel="stylesheet" type="text/css" >
     <link href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.2/dist/jquery.fancybox.min.css" link rel="stylesheet" type="text/css" >
@@ -40,7 +36,7 @@
                     <div class="row no-gutters">
                         <li>
                         <% @photos.each do |photo| %>
-                        <li><a href="/photos/<%= photo.id %>"><img src="<%= photo.file %>"></a></li>
+                        <li><a href="/photos/<%= photo.id %>"></a></li>
                         <% end %>
                     </div>
                 </div>
@@ -53,8 +49,6 @@
     <script src="/js/bs-init.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
-    <script src="/js/Profile-Edit-Form.js"></script>
     <script src="/js/theme.js"></script>
     </body>
 </html>
