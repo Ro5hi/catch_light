@@ -43,28 +43,21 @@
     <div class="col-md-8">
         <h1>Account</h1>
         <hr>
-    <div class="form-group">
-    
-        <label>Change Email</label>
         <h6> Your current email is <%= @current_user.email %>. </h6>
+        <div class="form-group">
+    
+        <label>Email</label>
             <form method="POST" action="/users/<%=@current_user.id%>">
             <input id="hidden" type="hidden" name="_method" value="PATCH">
-            <input type="text" name="email" value="<%= @current_user.email %>"></div>
+            <input type="text" name="email" value="<%= @current_user.email %>">
+            <br>
+        <label>Password</label>
+            <br>
+            <input type="password" name="password" value="<%= @current_user.password>">
+            <br>
             <input type="submit" value="submit">
             </form>
-            <div class="row">
-                <div class="col-sm-12 col-md-6">
-                    <div class="form-group">
-                    <label>Change Password</label>
-                    <form method="POST" action="/users/<%=@current_user.id%>">
-                        <input id="hidden" type="hidden" name="_method" value="PATCH">
-                        <input type="password" name="password" value="<%= @current_user.password>"></div>
-                        <input type="submit" value="submit">
-                    </form>
-                    </div>
-                </div>
-            </div>
-
+        </div>
     </div>
     <footer class="page-footer">
     <p>2020 Catch Light ™</p>

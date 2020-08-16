@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       end
     end
     
-    patch 'users/editprofile' do 
+    patch 'users/:id' do 
       @user = User.find_by(id: params[:id])
       if @user.update(email: params[:email], password: params[:password])
         @user.update(params)

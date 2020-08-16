@@ -32,10 +32,16 @@ class ApplicationController < Sinatra::Base
 
   patch '/users/:id' do 
     @current_user = User.find_by(id: params[:id])
-    if @current_user && @current_user.update(email: params[:email], password: params[:password])
-      @current_user.update(params)
-      redirect to 'users/editprofile'
-    end 
+      if @current_user && @current_user.update(email: params[:email], password: params[:password])
+        @current_user.update(params)
+        redirect to 'users/editprofile'
+      else 
+        redirect to 'users/hello'
+      end 
+  end 
+
+  get '/users/:id' do 
+    erb :'users/hello' 
   end 
 
   get '/editprofile' do
