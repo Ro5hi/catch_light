@@ -22,15 +22,15 @@ class UsersController < ApplicationController
       end
     end
     
-    patch 'users/editprofile' do 
-      @user = User.find_by(id: params[:id])
-      if @user && @user.update(email: params[:email], password: params[:password])
-        @user.update(params)
-        redirect to '/editprofile'
-      else 
-        redirect to 'photos/recent'
-      end 
-    end 
+    # patch 'users/editprofile' do 
+    #   @user = User.find_by(id: params[:id])
+    #   if @user && @user.update(email: params[:email], password: params[:password])
+    #     @user.update(params)
+    #     redirect to '/editprofile'
+    #   else 
+    #     redirect to 'photos/recent'
+    #   end 
+    # end 
     
     post '/login' do
       user = User.find_by(email: params[:email])

@@ -12,7 +12,7 @@ class ApplicationController < Sinatra::Base
   end
   
   post '/login' do
-    if user = User.create(name: params[:name], email: params[:email], password: params[:password])
+    if user = User.create(email: params[:email], password: params[:password])
       session[:user_id] = user.id 
       erb :'users/hello'
     else
@@ -27,6 +27,14 @@ class ApplicationController < Sinatra::Base
         user = User.create(name: params[:name], email: params[:email], password: params[:password])
         session[:user_id] = user.id
         redirect to 'users/hello'
+    end 
+  end
+
+  patch '/users/:id' do 
+    @current_user = User.find_by(id: params[:id])
+    if @current_user && @current_user.update(email: params[:email], password: params[:password])
+      @current_user.update(params)
+      redirect to 'users/editprofile'
     end 
   end 
 

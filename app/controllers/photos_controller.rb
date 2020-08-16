@@ -43,7 +43,7 @@ class PhotosController < ApplicationController
           redirect to '/photos'
         end 
       end 
-    end 
+    end
 
     
 end
