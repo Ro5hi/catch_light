@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 
     get '/photos' do 
-      @photos = Photo.all 
+      @photos = Photo.all
       @users = User.all
       erb :'photos/recent'
     end 
@@ -10,10 +10,10 @@ class PhotosController < ApplicationController
         puts "#{params[:file]}"
         photo = Photo.new
       
-        photo.file = params[:file][:filename]
+        photo.url = params[:file][:filename]
         photo.save!
       
-        File.open("./public/uploads/#{params[:file][:filename]}", 'wb') do |f|
+        File.open("./public/uploads/#{photo.url}", 'wb') do |f|
         f.write(params[:file][:tempfile].read)
       end
       

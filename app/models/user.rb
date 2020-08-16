@@ -5,6 +5,5 @@ class User < ActiveRecord::Base
 
     validates_presence_of :email, :password_digest
     validates_uniqueness_of :email, presence: {message: "That email is already taken, please use another email."}
-    validates_uniqueness_of :email, presence: {message: "That email is already associated to another account. Please use another email."}
 
 end

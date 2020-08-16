@@ -11,14 +11,14 @@ class ApplicationController < Sinatra::Base
     erb :'users/home'
   end
   
-  post '/login' do
-    if user = User.create(email: params[:email], password: params[:password])
-      session[:user_id] = user.id 
-      erb :'users/hello'
-    else
-        redirect to '/'
-    end 
-  end
+  # post '/login' do
+  #   if user = User.create(email: params[:email], password: params[:password])
+  #     session[:user_id] = user.id 
+  #     erb :'users/hello'
+  #   else
+  #       redirect to 'users/home'
+  #   end 
+  # end
 
   post '/signup' do
     if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
@@ -53,20 +53,20 @@ class ApplicationController < Sinatra::Base
 
   get '/login' do
     if logged_in?
-      erb :'users/hello'
+      erb :'users/home'
     else 
-      redirect '/users/home'
-    end 
-  end
+      redirect '/users/hello/#{@user.id}'
+    end 	    
+  end 
 
   get '/users/home' do
     erb :'users/home'
   end 
 
-  get '/users/goodbye' do 
-    session.clear
-    erb :'users/goodbye' 
-  end 
+  # get '/users/goodbye' do 
+  #   session.clear
+  #   erb :'users/goodbye' 
+  # end 
 
   get '/logout' do 
     session.clear 

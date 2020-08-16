@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       end
       
       def current_user
-        puts session[:user_id]
+        # puts session[:user_id]
         @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
       end
   
@@ -22,24 +22,25 @@ class UsersController < ApplicationController
       end
     end
     
-    # patch 'users/editprofile' do 
-    #   @user = User.find_by(id: params[:id])
-    #   if @user && @user.update(email: params[:email], password: params[:password])
-    #     @user.update(params)
-    #     redirect to '/editprofile'
-    #   else 
-    #     redirect to 'photos/recent'
-    #   end 
-    # end 
+    patch 'users/editprofile' do 
+      @user = User.find_by(id: params[:id])
+      if @user.update(email: params[:email], password: params[:password])
+        @user.update(params)
+        redirect to '/editprofile'
+      else 
+        redirect to '/users/home'
+      end 
+    end 
     
     post '/login' do
-      user = User.find_by(email: params[:email])
-      if user && user.authenticate(params[:password])
+      if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
+        erb :'users/home'
+     else
+        user = User.find_by(:email => params[:email])
+        user && user.authenticate(params[:password])
         session[:user_id] = user.id
         redirect to 'users/hello'
-      else
-        puts "Invalid email/password."
-      end
+     end 
     end 
 
     delete '/users/:id' do
