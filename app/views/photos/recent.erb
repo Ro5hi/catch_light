@@ -27,25 +27,16 @@
         </div>
         </div>
     </nav>
-
-    <main class="recent-grid-page">
-        <section class="photo compact-grid">
-            <section class="photo-group">
-                <div class="container">
-                    <div class="row no-gutters">
-                        <li>
-                        <% @photos.each do |photo| %>
-
-                            <img src="<%= url('/public/uploads/#{photo.url}') %>" />
-
-                        </li>
-                        <% end %>
-                        
-                    </div>
+        <section class="photo-group">
+            <div class="container">
+                <div class="row no-gutters">
+                    <% @photos.each do |photo| %>
+                        <img class="img-fluid image" src="/uploads/<%= photo.url %>" />
+                    <% end %>
                 </div>
+            </div>
         </section>
-    </main>
-
+             
     <footer class="page-footer">
         <p>2020 Catch Light ™</p>
     </footer>
