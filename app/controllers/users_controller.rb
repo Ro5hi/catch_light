@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       end 
     end
 
-    patch '/users/:id' do 
+    patch '/users/:id' do
       @current_user = User.find_by(id: params[:id])
         if @current_user && @current_user.update(email: params[:email], password: params[:password])
           @current_user.update(params)
