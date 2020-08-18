@@ -36,10 +36,11 @@
                         <li>
                         <% @photos.each do |photo| %>
 
-                            <img src="<%=/@photo.url%>" id="photo"> 
+                            <img src="<%= url('/public/uploads/#{photo.url}') %>" />
 
                         </li>
                         <% end %>
+                        
                     </div>
                 </div>
         </section>
@@ -48,7 +49,6 @@
     <footer class="page-footer">
         <p>2020 Catch Light ™</p>
     </footer>
-    <script src="/js/bs-init.js"></script>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
     

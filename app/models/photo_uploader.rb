@@ -12,18 +12,18 @@ class PhotoUploader < CarrierWave::Uploader::Base
     
     def store_dir
         'public/uploads'
-      end
-    
+    end
+
+    def load_photos
+      Dir.glob("public/uploads/*.{jpg,JPG}")
+    end
+
     def content_type_whitelist
         [/image\//]
     end
 
     def extension_whitelist
-      %w[jpg jpeg png]
+      %w[jpg jpeg]
     end 
-
-    def default_url(*args)
-      "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-    end
 
 end
