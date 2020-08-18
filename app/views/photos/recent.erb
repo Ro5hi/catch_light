@@ -35,7 +35,9 @@
                     <div class="row no-gutters">
                         <li>
                         <% @photos.each do |photo| %>
-                            <img src="<%= photo.url %>" >
+
+                            <img src="<%=/@photo.url%>" id="photo"> 
+
                         </li>
                         <% end %>
                     </div>

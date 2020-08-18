@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
     post '/photos' do
         puts "#{params[:file]}"
         photo = Photo.new
-      
+
         photo.url = params[:file][:filename]
         photo.save!
       
