@@ -10,73 +10,29 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :'users/home'
   end
-  
-  # post '/login' do
-  #   if user = User.create(email: params[:email], password: params[:password])
-  #     session[:user_id] = user.id 
-  #     erb :'users/hello'
-  #   else
-  #       redirect to 'users/home'
-  #   end 
-  # end
 
-  post '/signup' do
-    if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
-       erb :'users/home'
-    else
-        user = User.create(name: params[:name], email: params[:email], password: params[:password])
-        session[:user_id] = user.id
-        redirect to 'users/hello'
-    end 
-  end
-
-  patch '/users/:id' do 
-    @current_user = User.find_by(id: params[:id])
-      if @current_user && @current_user.update(email: params[:email], password: params[:password])
-        @current_user.update(params)
-        redirect to 'users/editprofile'
-      else 
-        redirect to 'users/hello'
-      end 
-  end 
-
-  get '/users/:id' do 
-    erb :'users/hello' 
-  end 
-
-  get '/editprofile' do
-    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-    erb :'users/editprofile' 
+  def error 
+    status 404
+    erb :oop
   end 
   
-  get '/users/hello' do
-    erb :'users/hello'
-  end 
+  helpers do
+  
+    def logged_in?
+      !!current_user
+    end
+    
+    def current_user
+      User.find_by(id: session[:user_id])
+    end
 
-  get '/upload' do
-    erb :'photos/upload' 
-  end 
+    def protected!
+      redirect to '/' if !logged_in? 
+    end
 
-  get '/login' do
-    if logged_in?
-      erb :'users/home'
-    else 
-      redirect '/users/hello/#{@user.id}'
-    end 	    
-  end 
-
-  get '/users/home' do
-    erb :'users/home'
-  end 
-
-  # get '/users/goodbye' do 
-  #   session.clear
-  #   erb :'users/goodbye' 
-  # end 
-
-  get '/logout' do 
-    session.clear 
-    erb :'users/goodbye'
+    def authorized?
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+    end
   end 
   
 end

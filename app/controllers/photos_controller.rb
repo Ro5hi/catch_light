@@ -6,6 +6,10 @@ class PhotosController < ApplicationController
       erb :'photos/recent'
     end 
 
+    get '/upload' do
+      erb :'photos/upload' 
+    end 
+
     post '/photos' do
         puts "#{params[:file]}"
         photo = Photo.new
@@ -16,9 +20,7 @@ class PhotosController < ApplicationController
         File.open("./public/uploads/#{photo.url}", 'wb') do |f|
         f.write(params[:file][:tempfile].read)
       end
-      
       redirect to("/photos/recent")
-    
     end
 
     get '/photos/:id' do 
