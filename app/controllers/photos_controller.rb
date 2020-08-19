@@ -7,7 +7,9 @@ class PhotosController < ApplicationController
     end 
 
     get '/upload' do
+      if logged_in?
       erb :'photos/upload' 
+      end 
     end 
 
     post '/photos' do
@@ -24,15 +26,15 @@ class PhotosController < ApplicationController
       redirect to("/photos/recent")
     end    
 
-    # get '/photos/:id' do 
-    #   photo = Photo.new 
-    #   photo = Photo.find_by(id: params[:id])
-    #   redirect to("/photos")
-    # end
-    
+    get '/photos/:id' do 
+      photo = Photo.new 
+      photo = Photo.find_by(id: params[:user_id])
+      redirect to("/photos")
+    end
+
     # post '/photos/:id' do 
     #   @photo = Photo.find_by(params[:user_id])
-    #   @photo.name = params[:file][:filename]
+    #   @photo.name = Photo.find(params[:filename])
     #   @photo.save 
     #   redirect to "photos/#{photo.id}"
     # end
@@ -41,11 +43,21 @@ class PhotosController < ApplicationController
       if logged_in?
         @photo = Photo.find_by(params[:user_id])
         @photo.delete 
-          erb :'user/home'
+          erb :'/photos/delete'
         else 
-          redirect to '/photos'
+          error 
       end 
     end
 
-    
+    post'/photos/:id' do
+      if logged_in?
+        @photo = Photo.find_by(params[:user_id])
+        @photo.destroy
+          redirect to '/photos'
+      else 
+        error  
+      end 
+    end 
+
+ 
 end

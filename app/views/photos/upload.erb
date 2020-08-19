@@ -28,15 +28,21 @@
         </div>
     </div>
 </nav>
-
-    
+<div class="container">
+    <h5>Upload that shot!</h5>
     <form method='POST' action='/photos' enctype="multipart/form-data">
         <input type='file' name='file' accept="image/*">
-        <input type='submit' value='submit'></input> 
+        <br>
+        <input type='submit' value='submit'></input>
     </form>
-    <form method='POST' action='/photos/delete'>
-    <input type='submit' value='delete'></input>  
-    </form>
+
+    <br> 
+    
+    <h5>Not happy with that photo?</h5>
+        <form method='POST' action='/photos/delete'>
+            <input type='submit' value='delete'></input>  
+        </form>
+    </div>
 
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>

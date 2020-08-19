@@ -12,19 +12,6 @@ class UsersController < ApplicationController
       end 	    
     end 
 
-    get '/users/hello' do
-      erb :'users/hello'
-    end 
-
-    get '/editprofile' do
-      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-      erb :'users/editprofile' 
-    end
-    
-    get '/users/home/:id' do
-      erb :'users/home'
-    end   
-
     post '/signup' do
       if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
          erb :'users/home'
@@ -35,14 +22,37 @@ class UsersController < ApplicationController
       end 
     end
 
+    get '/users/hello' do
+      erb :'users/hello'
+    end 
+
+    get '/users/home/:id' do
+      erb :'users/home'
+    end   
+
+    get '/editprofile' do
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+      erb :'users/editprofile' 
+    end
+
+    post '/users/:id' do
+      if logged_in?
+      @current_user = User.find_by(id: params[:id])
+        @current_user.update(params)
+        redirect to 'users/editprofile'
+      else 
+        error 
+      end 
+    end 
+
     patch '/users/:id' do
       @current_user = User.find_by(id: params[:id])
-        if @current_user && @current_user.update(email: params[:email], password: params[:password])
+      if @current_user && @current_user.update(email: params[:email], password: params[:password])
           @current_user.update(params)
           redirect to 'users/editprofile'
-        else 
-          redirect to 'users/hello'
-        end 
+      else 
+          error 
+      end  
     end 
 
     get '/logout' do 
