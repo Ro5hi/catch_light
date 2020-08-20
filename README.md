@@ -1,6 +1,7 @@
 # Catch Light
 
 CATCH LIGHT is a Sinatra web-app that lets users upload and delete photos. Users can edit their login credentials upon signing up. 
+Structured using HTML, CSS, Ruby, minimal Javascript and the Sinatra framework.
 
 Installation:
 
@@ -8,7 +9,7 @@ Fork the file and run "shotgun".
 
 Usage:
 
-For storing photo uploads. 
+Carrierwave gem is used for storing and deleting iamges. Users can sign up for an account using their name, email, and a chosen password. Registered users may change their login credentials through the "Edit Profile" tab on the navigation bar.
 
 
 
