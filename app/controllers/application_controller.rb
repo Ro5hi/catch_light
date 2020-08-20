@@ -11,9 +11,8 @@ class ApplicationController < Sinatra::Base
     erb :'users/home'
   end
 
-  def error 
-    status 404
-    erb :oop
+  get '/oop' do 
+    erb :'/users/oop'
   end 
   
   helpers do
@@ -27,8 +26,10 @@ class ApplicationController < Sinatra::Base
     end
 
     def protected!
-      redirect to '/' if !logged_in? 
-    end
+      if !logged_in?
+      redirect to 'users/oop'
+      end 
+    end 
 
     def authorized?
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]

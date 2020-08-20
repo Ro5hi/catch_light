@@ -1,18 +1,19 @@
 class PhotosController < ApplicationController
 
-    get '/photos' do 
+    get '/photos' do
+      protected!
       @photos = Photo.all
       @users = User.all
       erb :'photos/recent'
     end 
 
     get '/upload' do
-      if logged_in?
+      protected!
       erb :'photos/upload' 
-      end 
     end 
 
     post '/photos' do
+      protected!
       puts "#{params[:file]}"
       photo = Photo.new
       user = User.new 
@@ -32,31 +33,18 @@ class PhotosController < ApplicationController
       redirect to("/photos")
     end
 
-    # post '/photos/:id' do 
-    #   @photo = Photo.find_by(params[:user_id])
-    #   @photo.name = Photo.find(params[:filename])
-    #   @photo.save 
-    #   redirect to "photos/#{photo.id}"
-    # end
-
     get '/photos/delete' do 
-      if logged_in?
-        @photo = Photo.find_by(params[:user_id])
-        @photo.delete 
-          erb :'/photos/delete'
-        else 
-          error 
-      end 
-    end
+      protected!
+      @photo = Photo.find_by(params[:user_id])
+      @photo.delete 
+      erb :'/photos/delete'
+    end 
 
     post'/photos/:id' do
-      if logged_in?
-        @photo = Photo.find_by(params[:user_id])
-        @photo.destroy
-          redirect to '/photos'
-      else 
-        error  
-      end 
+      protected!
+      @photo = Photo.find_by(params[:user_id])
+      @photo.destroy
+      redirect to '/photos'
     end 
 
  
