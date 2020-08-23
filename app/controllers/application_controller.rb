@@ -24,19 +24,19 @@ class ApplicationController < Sinatra::Base
     def logged_in?
       !!current_user
     end
-    
+
     def current_user
       User.find_by(id: session[:user_id])
     end
 
     def protected!
       if !logged_in?
-      redirect to 'users/oop'
+      redirect to '/invalid'
       end 
     end 
 
     def authorized?
-      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]  
     end
   end 
   

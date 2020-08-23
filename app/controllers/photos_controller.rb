@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
       protected!
       puts "#{params[:file]}"
       photo = Photo.new
-      user = User.new 
+      @user = User.new 
 
       photo.url = params[:file][:filename]
       photo.save!
@@ -24,7 +24,7 @@ class PhotosController < ApplicationController
       File.open("./public/uploads/#{photo.url}", 'wb') do |f|
       f.write(params[:file][:tempfile].read)
       end
-      redirect to("/photos/recent")
+      redirect to("/photos")
     end    
 
     get '/photos/:id' do 
@@ -34,14 +34,17 @@ class PhotosController < ApplicationController
     end
 
     get '/photos/delete' do 
-      protected!
+      authorized?
       @photo = Photo.find_by(params[:user_id])
-      @photo.delete 
-      erb :'/photos/delete'
+      if @current_user.id = params[:user_id]
+         @photo.delete 
+         erb :'/photos/delete' 
+      else 
+        redirect to '/users/oop'
+      end
     end 
 
-    post'/photos/:id' do
-      protected!
+    post'/photos/:id/delete' do
       @photo = Photo.find_by(params[:user_id])
       @photo.destroy
       redirect to '/photos'

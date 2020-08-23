@@ -30,7 +30,7 @@
     </div>
 </nav>
 <div class="container">
-    <h5>Upload that shot!</h5>
+    <h5>Upload it!</h5>
     <form method='POST' action='/photos' enctype="multipart/form-data">
         <input type='file' name='file' accept="image/*">
         <br>
@@ -40,7 +40,7 @@
     <br> 
     
     <h5>Not happy with that photo?</h5>
-        <form method='POST' action='/photos/delete'>
+        <form method='POST' action='/photos/:id/delete'>
             <input type='submit' value='delete'></input>  
         </form>
     </div>

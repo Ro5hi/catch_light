@@ -1,38 +1,34 @@
 class UsersController < ApplicationController   
 
     get '/login' do
-      password = params[:password]
-      user = @user 
-      authenticate = User.find_by(name: params[:name], email: params[:email], password_digest: params[:password])
-      if @user && @user.authenticate(email: params[:email], password_digest: params[:password])
-        erb :'users/hello'
-      else 
-        redirect to '/invalid'
-      end 	    
+      @user = User.find_by(name: params[:name], email: params[:email], password_digest: params[:password]) 
+      erb :'users/hello'
     end 
 
     post '/signup' do
       if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
          erb :'users/home'
       else
-          user = User.create(name: params[:name], email: params[:email], password_digest: params[:password])
+          user = User.create(name: params[:name], email: params[:email], password: params[:password])
           session[:user_id] = user.id
+          user.save 
           redirect to 'users/hello'
       end 
     end 
 
     post '/login' do 
-      @user = User.find_by(email: params[:email], password: params[:password])
-      if @user
-        session[:user_id] = @user.id
-        redirect '/users/hello'
+      @user = User.find_by(name: params[:name], email: params[:email], password: params[:password])
+      if @user.authenticate(params[:password])
+         session[:user_id] = @user.id.to_s
+         @user.save 
+         redirect '/users/hello'
       end
       redirect '/'
     end
     
     get '/users/hello' do
       if logged_in?
-      erb :'users/hello'
+        erb :'users/hello'
       end
     end
 
