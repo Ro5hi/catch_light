@@ -14,6 +14,10 @@ class ApplicationController < Sinatra::Base
   get '/oop' do 
     erb :'/users/oop'
   end 
+
+  get '/invalid' do 
+    erb :'users/invalid'
+  end 
   
   helpers do
   
