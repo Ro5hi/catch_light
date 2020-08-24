@@ -1,10 +1,11 @@
 class UsersController < ApplicationController   
     
     get '/login' do
-      if logged_in?
-        erb :'users/home'
+      @user = User.find_by(params[:email])
+      if @user.authenticate(params[:password]).to_s
+        erb :'users/hello'
       else 
-        redirect '/users/hello'
+        redirect '/oop'
       end 	    
     end 
 
@@ -23,9 +24,10 @@ class UsersController < ApplicationController
       if @user
         session[:user_id] = @user.id
         redirect '/users/hello'
+      else
+      redirect '/oop'
       end
-      redirect '/'
-    end
+    end 
     
     get '/users/hello' do
       if logged_in?
