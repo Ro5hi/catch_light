@@ -15,7 +15,8 @@ class ApplicationController < Sinatra::Base
     erb :'/users/oop'
   end 
 
-  get '/invalid' do 
+  get '/invalid' do
+    session.clear
     erb :'users/invalid'
   end 
   
@@ -36,7 +37,7 @@ class ApplicationController < Sinatra::Base
     end 
 
     def authorized?
-        @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]  
+      @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]  
     end
   end 
   

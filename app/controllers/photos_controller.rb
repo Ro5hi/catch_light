@@ -3,7 +3,8 @@ class PhotosController < ApplicationController
     get '/photos' do
       protected!
       @photos = Photo.all
-      @users = User.all
+      @user = User.all
+      @current_user = User.find_by(id: params[:user_id])
       erb :'photos/recent'
     end 
 
@@ -16,7 +17,7 @@ class PhotosController < ApplicationController
       protected!
       puts "#{params[:file]}"
       photo = Photo.new
-      @user = User.new 
+      @current_user = User.find_by(id: params[:user_id])
 
       photo.url = params[:file][:filename]
       photo.save!
@@ -34,17 +35,24 @@ class PhotosController < ApplicationController
     end
 
     get '/photos/delete' do 
-      authorized?
       @photo = Photo.find_by(params[:user_id])
-      if @current_user.id = params[:user_id]
+      if @current_user = User.find_by(id: params[:user_id])
          @photo.delete 
          erb :'/photos/delete' 
       else 
         redirect to '/users/oop'
       end
+    end
+
+    patch '/photos/:id/delete' do
+      @photos = Photo.find_by(params[:user_id])
+      @current_user = User.find_by(id: params[:user_id])
+      @current_user && @current_user.update(@photos)
+      @current_user.update(@photos)
     end 
 
-    post'/photos/:id/delete' do
+    post '/photos/:id/delete' do
+      @current_user = User.find_by(id: params[:user_id])
       @photo = Photo.find_by(params[:user_id])
       @photo.destroy
       redirect to '/photos'

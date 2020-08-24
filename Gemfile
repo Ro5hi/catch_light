@@ -10,7 +10,7 @@ gem 'sqlite3'
 gem 'thin'
 gem 'shotgun'
 gem 'pry'
-gem 'bcrypt'
+gem "bcrypt-ruby", :require => "bcrypt"
 gem 'tux'
 gem 'bootstrap'
 gem 'jquery'

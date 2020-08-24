@@ -41,7 +41,8 @@
     
     <h5>Not happy with that photo?</h5>
         <form method='POST' action='/photos/:id/delete'>
-            <input type='submit' value='delete'></input>  
+        <input id="hidden" type="hidden" value="PATCH">
+        <input type='submit' value='delete'></input>  
         </form>
     </div>
 
