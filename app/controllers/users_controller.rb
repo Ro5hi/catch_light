@@ -1,13 +1,12 @@
 class UsersController < ApplicationController   
     
-    get '/login' do
-      @user = User.find_by(params[:email])
-      if @user.authenticate(params[:password]).to_s
-        erb :'users/hello'
-      else 
-        redirect '/oop'
-      end 	    
-    end 
+    # get '/login' do
+    #   if logged_in? 
+    #     erb :'users/hello'
+    #   else 
+    #     redirect to '/oop'
+    #   end 
+    # end 
 
     post '/signup' do
       if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
@@ -19,14 +18,14 @@ class UsersController < ApplicationController
       end 
     end 
 
-    post '/login' do 
-      @user = User.find_by(name: params[:name], email: params[:email], password: params[:password])
-      if @user
-        session[:user_id] = @user.id
-        redirect '/users/hello'
-      else
-      redirect '/oop'
-      end
+      get '/login' do
+      @user = User.all 
+      @user = User.find_by(email: params[:email])
+      if @user.authenticate(params[:password]).to_s
+        erb :'users/hello'
+      else 
+        redirect '/oop'
+      end 	    
     end 
     
     get '/users/hello' do
