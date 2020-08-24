@@ -12,12 +12,12 @@ class UsersController < ApplicationController
     end 
 
     post '/login' do
-      @user = User.all 
       @user = User.find_by(email: params[:email])
       if @user.authenticate(password: params[:password]).to_s
-        erb :'users/hello'
-      else 
-        redirect 'users/invalid'
+         session[:user_id] = @user.id  
+         redirect to 'users/hello'
+      else
+        redirect to 'users/invalid'
       end 	    
     end 
     
