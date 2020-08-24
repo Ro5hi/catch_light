@@ -1,5 +1,5 @@
 class ApplicationController < Sinatra::Base
-  
+
   configure do
     set :public_folder, 'public'
     set :views, 'app/views'
@@ -31,8 +31,12 @@ class ApplicationController < Sinatra::Base
 
     def protected!
       if !logged_in?
-      redirect to '/oop'
+      redirect to '/invalid'
       end 
+    end 
+
+    def error 
+      redirect to '/oop'
     end 
 
     def authorized?

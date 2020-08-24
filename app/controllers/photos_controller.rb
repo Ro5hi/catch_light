@@ -1,5 +1,13 @@
 class PhotosController < ApplicationController
-  
+
+  def current_user
+    User.find(session[:user_id])
+  end
+
+  def photos  
+    @photo = Photo.find_by(id: params[:id])
+  end 
+
   get '/photos/recent/:id' do
     @photos = Photo.all
     @user = User.all
@@ -7,17 +15,17 @@ class PhotosController < ApplicationController
   end 
 
   get '/photos' do
-    protected!
+    @photos = Photo.all 
+    @users = User.all 
     erb :'photos/recent'
   end 
 
   get '/upload' do
     protected!
     erb :'photos/upload' 
-  end 
+  end  
 
   post '/photos' do
-    protected!
     @current_user = User.find_by(id: params[:user_id])
     puts "#{params[:file]}"
     photo = Photo.new
@@ -31,39 +39,18 @@ class PhotosController < ApplicationController
     redirect to("/photos/recent/#{photo.id}")
   end   
 
-  get '/photos/:id' do
-    protected!
+  post '/photos/:id' do
     @current_user = User.find_by(id: params[:id]) 
     @photo = Photo.find_by(id: params[:id])
-    redirect to('/photos')
+    redirect to("/photos")
   end
 
-  get '/photos/delete' do
-    protected! 
-    if @photo = @current_user.photo      
-       @photo.delete 
-       erb :'/photos/delete' 
-    else 
-       redirect to '/oop'
-    end
-  end
-
-  patch '/photos/:id/delete' do
+  post '/photos/:id/delete' do 
     protected!
-    @photos = Photo.find_by(params[:id])
-    @current_user = User.find_by(id: params[:user_id])
-    @current_user && @current_user.update(@photos)
-    @current_user.update(@photos)
-  end 
-
-  post '/photos/:id' do 
-    if authorized?
-      @photo = Photo.find_by(params[:user_id])
-      @photo.destroy
-      redirect to '/photos/recent'
-    else 
-      redirect to '/oop'  
-    end 
+    @photos = Photo.all  
+    @photos = Photo.find_by(id: params[:id])
+    @photos.destroy
+    redirect to '/photos'
   end 
 
 

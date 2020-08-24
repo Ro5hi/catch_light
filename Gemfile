@@ -14,6 +14,7 @@ gem 'bcrypt'
 gem 'tux'
 gem 'bootstrap'
 gem 'jquery'
+gem 'pundit'
 
 group :test do
   gem 'rspec'
