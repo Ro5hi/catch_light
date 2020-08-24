@@ -12,8 +12,8 @@
 
 ActiveRecord::Schema.define(version: 2020_08_14_182004) do
 
-  create_table "photos", primary_key: "user_id", force: :cascade do |t|
-    t.integer "id", null: false
+  create_table "photos", force: :cascade do |t|
+    t.integer "user_id"
     t.string "file"
     t.string "url"
   end

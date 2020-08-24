@@ -31,9 +31,10 @@
         <section class="photo-group">
             <div class="container">
                 <div class="row no-gutters">
-                    <% @photo.each do |photo| if session[:user_id] %>
-                        <img class="img-fluid image" src="/uploads/<%= @photo.id %>" width="289.98" height="193.27" />
-                    <% end %>
+                <% @photos.each do |photo| %>
+                    
+                    <img class="img-fluid image" src="/uploads/<%= photo.url %>" width="289.98" height="193.27" />
+                <% end %>
                 </div>
             </div>
         </section>

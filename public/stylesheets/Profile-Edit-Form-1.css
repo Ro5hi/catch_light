@@ -1,3 +1,7 @@
+div.avatar > img {
+  border-radius: 50%;
+}
+
 div.container.profile {
   padding: 10px 20px;
 }
@@ -58,5 +62,25 @@ hr {
   min-width: 100px;
   margin: 0 5px;
   max-width: 200px;
+}
+
+img.avart-img {
+  max-width: 200px;
+}
+
+div.avatar-bg {
+  background: url(https://www.gravatar.com/avatar/1234566?size=200&d=mm);
+  background-position: 50% 50%;
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+  border-radius: 50%;
+  margin-left: calc(50% - 100px);
+}
+
+div.avatar {
+}
+
+.portfolio-block.block-intro {
 }
 
