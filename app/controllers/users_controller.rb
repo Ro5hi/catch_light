@@ -32,16 +32,6 @@ class UsersController < ApplicationController
       erb :'users/hello' 
     end 
 
-    get '/users/home/:id' do
-      protected!
-      erb :'users/home'
-    end   
-
-    get '/users/invalid' do 
-      session.clear 
-      erb :'users/invalid'
-    end 
-
     get '/edit/profile' do
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
       erb :'users/edit' 

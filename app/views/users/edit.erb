@@ -16,9 +16,7 @@
 <div class="col-md-8">
         <h1>Account</h1>
         <hr>
-        <h6> Your current email is <%= @current_user.email %>. </h6>
         <div class="form-group">
-    
         <label>Email</label>
             <form method="POST" action="/users/<%=@current_user.id%>">
             <input id="hidden" type="hidden" value="PATCH">

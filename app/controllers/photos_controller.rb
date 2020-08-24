@@ -12,6 +12,11 @@ class PhotosController < ApplicationController
     erb :'photos/upload' 
   end 
 
+  get '/recent' do 
+    protected!
+    erb :'photos/recent'
+  end 
+
   post '/photos' do
     protected!
     @current_user = User.find_by(id: params[:user_id])
