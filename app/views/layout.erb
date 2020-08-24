@@ -1,12 +1,11 @@
-<DOCTYPE! HTML> 
-<html>
-
+<!DOCTYPE html>
+<html style="padding: 95px;">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>CATCH LIGHT</title>
-
+    
     <link href="/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css" >
     <link href="/stylesheets/font-awesome.min.css" rel="stylesheet" type="text/css" >
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" link rel="stylesheet" type="text/css" >
@@ -15,22 +14,14 @@
 
 </head>
 
-<h2>Delete Photos</h2>
-        <hr>
-    <form method="POST" action="/photos/:id/delete">
-        <div class="form-group">
-          <label>Photos</label>
-            <%= @photo.delete if @user.photo? %>
-            <%= f.file_field :photo %>
-            <input type="submit" value="Delete">
-        <div>
-    </form>
+<%= yield %>
 
-  <footer class="page-footer">
-    <p>2020 Catch Light ™</p>
-  </footer>
-    <script src="/js/jquery.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
-    
-  </html>
+<footer class="page-footer">
+<p>2020 Catch Light ™</p>
+</footer>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>

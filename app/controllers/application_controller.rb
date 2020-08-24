@@ -8,7 +8,7 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    erb :'users/home'
+    erb :home
   end
 
   get '/oop' do 

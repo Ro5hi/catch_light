@@ -1,37 +1,30 @@
 class UsersController < ApplicationController   
-    
-    # get '/login' do
-    #   if logged_in? 
-    #     erb :'users/hello'
-    #   else 
-    #     redirect to '/oop'
-    #   end 
-    # end 
 
     post '/signup' do
       if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
-         erb :'users/home'
+         erb :'users/invalid'
       else
           user = User.create(name: params[:name], email: params[:email], password: params[:password])
           session[:user_id] = user.id
+          user.save 
           redirect to 'users/hello'
       end 
     end 
 
-      get '/login' do
+    post '/login' do
       @user = User.all 
       @user = User.find_by(email: params[:email])
-      if @user.authenticate(params[:password]).to_s
+      if @user.authenticate(password: params[:password]).to_s
         erb :'users/hello'
       else 
-        redirect '/oop'
+        redirect 'users/invalid'
       end 	    
     end 
     
     get '/users/hello' do
       if logged_in?
-        erb :'users/hello'
-      end 
+      erb :'users/hello' 
+      end
     end
 
     get '/users/:id' do 
@@ -44,17 +37,21 @@ class UsersController < ApplicationController
       erb :'users/home'
     end   
 
-    get '/editprofile' do
-      protected!
+    get '/users/invalid' do 
+      session.clear 
+      erb :'users/invalid'
+    end 
+
+    get '/edit/profile' do
       @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
-      erb :'users/editprofile' 
+      erb :'users/edit' 
     end
 
     post '/users/:id' do
       protected!
       @current_user = User.find_by(id: params[:id])
       @current_user.update(params)
-      redirect to 'users/editprofile' 
+      redirect to '/edit/profile' 
     end 
 
     patch '/users/:id' do
@@ -62,7 +59,7 @@ class UsersController < ApplicationController
       @current_user = User.find_by(id: params[:id])
       @current_user && @current_user.update(email: params[:email], password: params[:password])
       @current_user.update(params)
-      redirect to 'users/editprofile' 
+      redirect to '/edit/profile' 
     end 
 
     get '/logout' do
