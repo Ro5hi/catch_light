@@ -15,16 +15,17 @@ class PhotosController < ApplicationController
   get '/upload' do
     protected!
     erb :'photos/upload' 
-  end  
+  end
 
   post '/photos' do
-    @current_user = User.find_by(id: params[:user_id])
+    @user = current_user
     puts "#{params[:file]}"
     photo = Photo.new
+    @user.photos == photo
 
-    photo.url = params[:file][:filename]
+    photo.url = params[:file][:filename]   
     photo.save!
-      
+    
     File.open("./public/uploads/#{photo.url}", 'wb') do |f|
     f.write(params[:file][:tempfile].read)
     end
@@ -45,8 +46,8 @@ class PhotosController < ApplicationController
     protected!
     photos = Photo.find_by(params[:user_id])
     if owned(photos)
-      photos.destroy 
-      redirect to '/photos'
+       photos.destroy 
+       redirect to '/photos'
     else 
       redirect to '/restricted'
     end  

@@ -40,9 +40,9 @@ class ApplicationController < Sinatra::Base
     end
     
     def owned(photos)
-      users = User.find_by(id: session[:user_id])
-      photos = Photo.find_by(id: params[:user_id])
-      users.id == photos.id
+      binding.pry
+      user = User.find_by(params[:user_id])
+      photos.user == user 
     end 
 
     def error 
