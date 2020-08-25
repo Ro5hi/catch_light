@@ -6,6 +6,16 @@ class PhotosController < ApplicationController
     erb :'photos/recent'
   end 
 
+  get '/photo.url/' do 
+    redirect to 'photo/show/:id'
+  end 
+
+  get '/photo/show/:id' do 
+    @photos = Photo.all 
+    @user = current_user
+    erb :'photos/show'
+  end 
+
   get '/photos' do
     @photos = Photo.all 
     @users = User.all 
@@ -14,6 +24,7 @@ class PhotosController < ApplicationController
 
   get '/upload' do
     protected!
+    @user = current_user
     erb :'photos/upload' 
   end
 
@@ -21,9 +32,8 @@ class PhotosController < ApplicationController
     @user = current_user
     puts "#{params[:file]}"
     photo = Photo.new
-    @user.photos == photo
 
-    photo.url = params[:file][:filename]   
+    photo.url = params[:file][:filename]
     photo.save!
     
     File.open("./public/uploads/#{photo.url}", 'wb') do |f|
@@ -49,7 +59,7 @@ class PhotosController < ApplicationController
        photos.destroy 
        redirect to '/photos'
     else 
-      redirect to '/restricted'
+      content_protected
     end  
   end 
 

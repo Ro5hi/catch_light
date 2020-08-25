@@ -1,0 +1,18 @@
+<h1> Profile Page </h1>
+    <% @current_user.photos do |photo| %>
+        <img class="img-fluid image" src="/uploads/<%= photo.url %>" width="500" height="400" />
+    <% end %>
+
+<h5>Delete</h5> 
+<form method="POST" action='/photo.url/:id'>
+<input type="hidden" name="_method" value="DELETE"> 
+<input type='submit' value='delete'></input>  
+</form>
+<br>
+<h5>Upload</h5>
+<form method='POST' action='/photos' enctype="multipart/form-data">
+<input type="hidden" name="_method" value="POST">
+<input type='file' name='file' accept="image/*">
+<br> 
+<input type='submit' value='upload'></input>
+</form> 

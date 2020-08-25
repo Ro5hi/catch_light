@@ -40,9 +40,12 @@ class ApplicationController < Sinatra::Base
     end
     
     def owned(photos)
-      binding.pry
-      user = User.find_by(params[:user_id])
+      user = User.find_by(params[:session_id])
       photos.user == user 
+    end 
+
+    def content_protected 
+      redirect to '/restricted'
     end 
 
     def error 
