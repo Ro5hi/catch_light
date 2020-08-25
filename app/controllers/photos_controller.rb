@@ -31,17 +31,25 @@ class PhotosController < ApplicationController
     redirect to("/photos/recent/#{photo.id}")
   end   
 
+  get '/photos/:id' do  
+    @photos = Photo.find_by(id: params[:user_id])
+    redirect to("/photos")
+  end 
+  
   post '/photos/:id' do
-    @photo = Photo.find_by(id: params[:id])
+    @photos = Photo.find_by(id: params[:user_id])
     redirect to("/photos")
   end
 
-  post '/photos/:id' do 
+  delete '/photos/:id' do 
     protected!
-    session[:user_id] = @user 
-    photo = Photo.find_by(id: params[:id])
-    photo.destroy
-    redirect to '/photos' 
+    photos = Photo.find_by(params[:user_id])
+    if owned(photos)
+      photos.destroy 
+      redirect to '/photos'
+    else 
+      redirect to '/restricted'
+    end  
   end 
 
 end

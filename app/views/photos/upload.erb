@@ -12,16 +12,17 @@
     </nav>
 
 <div class="container">
-    <h5>Upload!</h5>
+    <h5>Upload!</h5> 
     <form method='POST' action='/photos' enctype="multipart/form-data">
+        <input type="hidden" name="_method" value="POST">
         <input type='file' name='file' accept="image/*">
-        <br>
+        <br> 
         <input type='submit' value='upload'></input>
-    </form>
+    </form> 
     <br> 
-    <h5>Delete?</h5>
+    <h5>Delete?</h5> 
         <form method="POST" action='/photos/:id'>
-        <input id="hidden" type ="hidden" method_="delete"> 
+        <input type="hidden" name="_method" value="DELETE"> 
         <input type='submit' value='delete'></input>  
         </form>
     </div>
