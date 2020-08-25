@@ -1,13 +1,5 @@
 class PhotosController < ApplicationController
 
-  def current_user
-    User.find(session[:user_id])
-  end
-
-  def photos  
-    @photo = Photo.find_by(id: params[:id])
-  end 
-
   get '/photos/recent/:id' do
     @photos = Photo.all
     @user = User.all
@@ -40,18 +32,16 @@ class PhotosController < ApplicationController
   end   
 
   post '/photos/:id' do
-    @current_user = User.find_by(id: params[:id]) 
     @photo = Photo.find_by(id: params[:id])
     redirect to("/photos")
   end
 
-  post '/photos/:id/delete' do 
+  post '/photos/:id' do 
     protected!
-    @photos = Photo.all  
-    @photos = Photo.find_by(id: params[:id])
-    @photos.destroy
-    redirect to '/photos'
+    session[:user_id] = @user 
+    photo = Photo.find_by(id: params[:id])
+    photo.destroy
+    redirect to '/photos' 
   end 
-
 
 end
