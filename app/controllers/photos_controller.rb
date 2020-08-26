@@ -11,6 +11,12 @@ class PhotosController < ApplicationController
     erb :'photos/recent'
   end
 
+  get '/user/photos/show/:id' do
+    @photos = Photo.where(user_id: current_user.id)
+    @photo = Photo.find(params[:id])
+    erb :'photos/show'
+  end 
+
   get '/photos/show/:id' do
     @current_user = current_user
     @photo = Photo.find(params[:id])
