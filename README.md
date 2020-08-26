@@ -1,13 +1,13 @@
 ## Catch Light 
 
-CATCH LIGHT is a Sinatra web-app that lets users upload and delete photos. Users can edit their login credentials upon signing up. 
-Structured using HTML, CSS, Ruby, minimal Javascript and the Sinatra framework.
+CATCH LIGHT is a Sinatra web-app project that was made as part of module 2 with Flatiron School. 
+Inspired by social apps Instagram, Behance, & Flickr, as well as, the minimalist aesthetic of SquareSpace templates.
 
 ____________________________
 
 ## Built with:
 
-Visual Code Studio. Languages used are Ruby, HTML, CSS and Javascript. Framework used is Sinatra.
+Structured using HTML, CSS, Ruby, minimal Javascript and the Sinatra framework.
 
 ## Installation:
 
