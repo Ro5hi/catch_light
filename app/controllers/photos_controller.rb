@@ -5,14 +5,14 @@ class PhotosController < ApplicationController
     @user = User.all
     erb :'photos/recent'
   end 
+  
+  get '/user/profile' do
+    @photos = Photo.where(user_id: current_user.id)
+    erb :'photos/recent'
+  end
 
-  get '/photo.url/' do 
-    redirect to 'photo/show/:id'
-  end 
-
-  get '/photo/show/:id' do 
-    @photos = Photo.all 
-    @user = current_user
+  get '/photos/show/:id' do  
+    @photo = Photo.find(params[:id])
     erb :'photos/show'
   end 
 
@@ -31,13 +31,15 @@ class PhotosController < ApplicationController
   post '/photos' do
     @user = current_user
     puts "#{params[:file]}"
-    photo = Photo.new
+    photo = current_user.photos.build
 
     photo.url = params[:file][:filename]
     photo.save!
     
     File.open("./public/uploads/#{photo.url}", 'wb') do |f|
     f.write(params[:file][:tempfile].read)
+
+    redirect to ("/photos/show/#{photo.id}")
     end
     redirect to("/photos/recent/#{photo.id}")
   end   
@@ -54,8 +56,7 @@ class PhotosController < ApplicationController
 
   delete '/photos/:id' do 
     protected!
-    photos = Photo.find_by(params[:user_id])
-    if owned(photos)
+    if photos = Photo.find_by(id: params[:id])
        photos.destroy 
        redirect to '/photos'
     else 

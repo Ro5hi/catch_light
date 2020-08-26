@@ -38,13 +38,17 @@ class ApplicationController < Sinatra::Base
       redirect to '/invalid'
       end 
     end
-    
-    def owned(photos)
-      user = User.find_by(params[:session_id])
-      photos.user == user 
-    end 
 
-    def content_protected 
+    def invalid_user 
+      redirect to '/invalid'
+    end 
+    
+    # def owned(photos)
+    #   user = User.find_by(params[:session_id])
+    #   photos.user == user 
+    # end 
+
+    def content_protected
       redirect to '/restricted'
     end 
 

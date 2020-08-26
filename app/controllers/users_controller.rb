@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
     post '/signup' do
       if params[params[:email] == "" || params[:password] == "" || params[:confirm_password] == ""]
-         erb :'users/invalid'
+         invalid_user
       else
           user = User.create(name: params[:name], email: params[:email], password: params[:password])
           session[:user_id] = user.id
@@ -13,11 +13,11 @@ class UsersController < ApplicationController
 
     post '/login' do
       @user = User.find_by(email: params[:email])
-      if @user.authenticate(password: params[:password]).to_s
+      if @user && @user.authenticate(params[:password])
          session[:user_id] = @user.id  
          redirect to 'users/hello'
       else
-        redirect to 'users/invalid'
+        invalid_user
       end 	    
     end 
     
