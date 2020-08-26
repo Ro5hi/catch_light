@@ -23,11 +23,7 @@ Users must first sign up for an account using their name, email, and a chosen pa
 
 ### Screenshot:
 
-<<<<<<< HEAD
-![HomePage](https://imgur.com/5yhrvbo)
-=======
 ![Homepage](https://imgur.com/5yhrvbo.jpg)
->>>>>>> bd2a39c868baebe15c57a714fb2991da7ee2970c
 
 ____________________________
 
