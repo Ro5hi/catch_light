@@ -2,28 +2,27 @@
         <div class="container-fluid"><a class="navbar-brand" data-bs-hover-animate="pulse" href="#" style="color: rgba(116,245,56,0.9);">CATCH LIGHT</a>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="user/profile" style="color: rgb(255,255,255);">Profile</a></li>
+                    
                     <li class="nav-item" role="presentation"><a class="nav-link active" href="/users/hello" style="color: rgb(255,255,255);">Home</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="user/profile" style="color: rgb(255,255,255);">Profile</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link active" data-bs-hover-animate="pulse" href="/upload" style="color: rgb(255,255,255);">Upload/Remove</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="/edit/profile" style="color: rgb(255,255,255);">Edit Profile</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="/edit/profile" style="color: rgb(255,255,255);">Account</a></li>
                     <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="/logout" style="color: rgb(255,255,255);">Log Out</a></li>
                 </ul>
         </div>
         </div>
     </nav>
 
-        <section class="photo-group">
-            <div class="container">
-                <div class="row no-gutters">
-
-                <% @photos.each do |photo| %>
-                    <%= photo.title %>  
-                    <a href="photos/show/<%= photo.id %>"><img class="img-fluid image" src="/uploads/<%= photo.url %>" width="500" height="400" />
-                    </a>
-                    <% end %>
-                
-                </div>
+    <section class="photo-group">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-6 col-lg-4
+                    <li><% @photos.each do |photo| %>
+                        <div class="col-md-6 col-lg-4"> <a href="photos/show/<%= photo.id %>"><img class="img-fluid image" src="/uploads/<%= photo.url %>" width="500" height="400" /></a></div>
+                        <% end %>
+                    </li>
             </div>
-        </section>
+        </div>
+    </section>
              
   

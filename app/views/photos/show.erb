@@ -2,8 +2,9 @@
 <div class="container-fluid"><a class="navbar-brand" data-bs-hover-animate="pulse" href="#" style="color: rgba(116,245,56,0.9);">CATCH LIGHT</a>
     <div class="collapse navbar-collapse" id="navcol-1">
         <ul class="nav navbar-nav">
-            <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="user/profile" style="color: rgb(255,255,255);">Profile</a></li>
             <li class="nav-item" role="presentation"><a class="nav-link active" href="/users/hello" style="color: rgb(255,255,255);">Home</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="/photos" style="color: rgb(255,255,255);">Photos</a></li>
+            <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="user/profile" style="color: rgb(255,255,255);">Profile</a></li>
             <li class="nav-item" role="presentation"><a class="nav-link active" data-bs-hover-animate="pulse" href="/upload" style="color: rgb(255,255,255);">Upload/Remove</a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="/edit/profile" style="color: rgb(255,255,255);">Edit Profile</a></li>
             <li class="nav-item" role="presentation"><a class="nav-link" data-bs-hover-animate="pulse" href="/logout" style="color: rgb(255,255,255);">Log Out</a></li>
@@ -12,25 +13,27 @@
 </div>
 </nav>
 
-<h1> Show Photo</h1>
 <br>
-<%= @photo.title %>
+<h1> Show Photo </h1>
+<br>
+<h3> Title: <%= @photo.title %> </h3>
 <br>
 
     
 <img class="img-fluid image" src="/uploads/<%= @photo.url %>" width="500" height="400" />
-
+<br>
 <% if @photo.user_id == @current_user.id %>
-
-<h5>Delete</h5> 
+<br>
+<h5>Delete?</h5> 
 <form method="POST" action="/photos/<%= @photo.id %>">
 <input type="hidden" name="_method" value="DELETE"> 
 <input type='submit' value='delete'></input>  
 </form>
 <br> 
-<h5>Change title</h5>
+<h5>Change title:</h5>
 <form method='POST' action="/photos/<%= @photo.id %>">
 <input type='text' name='title' value='<%= @photo.title %>' >
+<br>
 <br>
 <input type='submit' value='submit'>
 
