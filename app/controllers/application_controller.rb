@@ -13,7 +13,7 @@ class ApplicationController < Sinatra::Base
 
   get '/oop' do 
     erb :'/users/oop'
-  end 
+  end
 
   get '/invalid' do 
     erb :'users/invalid'

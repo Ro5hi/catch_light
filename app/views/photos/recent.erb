@@ -19,7 +19,7 @@
             <div class="row no-gutters">
                 <div class="col-md-6 col-lg-4
                     <li><% @photos.each do |photo| %>
-                        <div class="col-md-6 col-lg-4"> <a href="photos/show/<%= photo.id %>"><img class="img-fluid image" src="/uploads/<%= photo.url %>" width="500" height="400" /></a></div>
+                        <div class="col-md-6 col-lg-4"> <a href="photos/<%= photo.id %>"><img class="img-fluid image" src="/uploads/<%= photo.url %>" width="500" height="400" /></a></div>
                         <% end %>
                     </li>
             </div>

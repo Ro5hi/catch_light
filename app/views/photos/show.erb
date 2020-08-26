@@ -31,8 +31,9 @@
 </form>
 <br> 
 <h5>Change title:</h5>
-<form method='POST' action="/photos/<%= @photo.id %>">
-<input type='text' name='title' value='<%= @photo.title %>' >
+<form method='POST' action="/photos/<%= @photo.id %>" >
+<input name ='_method' type='hidden' value='patch' >
+<input name='title' type='text' value='<%= @photo.title %>' >
 <br>
 <br>
 <input type='submit' value='submit'>

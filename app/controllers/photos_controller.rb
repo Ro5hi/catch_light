@@ -11,13 +11,13 @@ class PhotosController < ApplicationController
     erb :'photos/recent'
   end
 
-  get '/user/photos/show/:id' do
+  get '/user/photos/:id' do
     @photos = Photo.where(user_id: current_user.id)
     @photo = Photo.find(params[:id])
     erb :'photos/show'
   end 
 
-  get '/photos/show/:id' do
+  get '/photos/:id' do
     @current_user = current_user
     @photo = Photo.find(params[:id])
     erb :'photos/show'
@@ -47,23 +47,23 @@ class PhotosController < ApplicationController
     File.open("./public/uploads/#{photo.url}", 'wb') do |f|
     f.write(params[:file][:tempfile].read)
 
-    redirect to ("/photos/show/#{photo.id}")
+    redirect to ("/photos/#{photo.id}")
     end
     redirect to("/photos/recent/#{photo.id}")
   end   
 
-  get '/photos/:id' do  
-    @photos = Photo.find_by(id: params[:user_id])
-    redirect to("/photos")
-  end 
+  # get '/photos/:id' do  
+  #   @photos = Photo.find_by(id: params[:user_id])
+  #   redirect to("/photos")
+  # end
   
-  post '/photos/:id' do
+  patch '/photos/:id' do
     protected!
     @photo = Photo.find_by(id: params[:id])
     if @photo.user_id == current_user.id  
        @photo.title = params[:title]
        @photo.save!
-       redirect to("/photos/show/#{@photo.id}")
+       redirect to("/photos/#{@photo.id}")
     else 
        content_protected
     end 
