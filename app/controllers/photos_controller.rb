@@ -11,7 +11,8 @@ class PhotosController < ApplicationController
     erb :'photos/recent'
   end
 
-  get '/photos/show/:id' do  
+  get '/photos/show/:id' do
+    @current_user = current_user
     @photo = Photo.find(params[:id])
     erb :'photos/show'
   end 
@@ -33,6 +34,7 @@ class PhotosController < ApplicationController
     puts "#{params[:file]}"
     photo = current_user.photos.build
 
+    photo.title = params[:title]
     photo.url = params[:file][:filename]
     photo.save!
     
@@ -50,8 +52,15 @@ class PhotosController < ApplicationController
   end 
   
   post '/photos/:id' do
-    @photos = Photo.find_by(id: params[:user_id])
-    redirect to("/photos")
+    protected!
+    @photo = Photo.find_by(id: params[:id])
+    if @photo.user_id == current_user.id  
+       @photo.title = params[:title]
+       @photo.save!
+       redirect to("/photos/show/#{@photo.id}")
+    else 
+       content_protected
+    end 
   end
 
   delete '/photos/:id' do 

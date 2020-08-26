@@ -17,6 +17,7 @@
                 <div class="row no-gutters">
 
                 <% @photos.each do |photo| %>
+                    <%= photo.title %>  
                     <a href="photos/show/<%= photo.id %>"><img class="img-fluid image" src="/uploads/<%= photo.url %>" width="500" height="400" />
                     </a>
                     <% end %>

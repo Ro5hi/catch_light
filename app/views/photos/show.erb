@@ -13,20 +13,25 @@
 </nav>
 
 <h1> Show Photo</h1>
+<br>
+<%= @photo.title %>
+<br>
 
     
 <img class="img-fluid image" src="/uploads/<%= @photo.url %>" width="500" height="400" />
 
+<% if @photo.user_id == @current_user.id %>
 
 <h5>Delete</h5> 
 <form method="POST" action="/photos/<%= @photo.id %>">
 <input type="hidden" name="_method" value="DELETE"> 
 <input type='submit' value='delete'></input>  
 </form>
-<br>
-<h5>Upload</h5>
-<form method='POST' action='/photos' enctype="multipart/form-data">
-<input type='file' name='file' accept="image/*">
 <br> 
-<input type='submit' value='upload'></input>
-</form> 
+<h5>Change title</h5>
+<form method='POST' action="/photos/<%= @photo.id %>">
+<input type='text' name='title' value='<%= @photo.title %>' >
+<br>
+<input type='submit' value='submit'>
+
+<% end %>
